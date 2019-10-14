@@ -1,0 +1,11 @@
+﻿@model JobBoardLMS.UI.MVC.Models.ContactViewModel
+@{
+    ViewBag.Title = "Email Confirmation";
+}
+<h1 class="mvcTitles typeWriter" style="color:#E21F46">@ViewBag.Title</h1>
+
+<div class="emailConfirmation">
+    <h4 class="emailConfirmation">I have received your message:</h4>
+    <p>@Model.Message</p>
+    <h4 class="emailConfirmation">I will respond as soon as I can to @Model.Email . Thank you for contacting me.</h4>
+</div>
