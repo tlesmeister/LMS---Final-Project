@@ -19,6 +19,6 @@ namespace JobBoardLMS.DATA.EF
         public int CourseID { get; set; }
         public System.DateTime DateCompleted { get; set; }
     
-        public virtual Cours Courses { get; set; }
+        public virtual Courses Course { get; set; }
     }
 }

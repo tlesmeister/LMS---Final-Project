@@ -27,7 +27,7 @@ namespace JobBoardLMS.DATA.EF
     
         public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
         public virtual DbSet<CourseCompletion> CourseCompletions { get; set; }
-        public virtual DbSet<Cours> Courses { get; set; }
+        public virtual DbSet<Courses> Courses1 { get; set; }
         public virtual DbSet<Lesson> Lessons { get; set; }
         public virtual DbSet<LessonView> LessonViews { get; set; }
         public virtual DbSet<UserDetail> UserDetails { get; set; }

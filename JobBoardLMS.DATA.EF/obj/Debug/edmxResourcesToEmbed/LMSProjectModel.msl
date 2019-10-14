@@ -29,8 +29,8 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Courses">
-      <EntityTypeMapping TypeName="LMSProjectModel.Cours">
+    <EntitySetMapping Name="Courses1">
+      <EntityTypeMapping TypeName="LMSProjectModel.Courses">
         <MappingFragment StoreEntitySet="Courses">
           <ScalarProperty Name="CourseID" ColumnName="CourseID" />
           <ScalarProperty Name="CourseName" ColumnName="CourseName" />

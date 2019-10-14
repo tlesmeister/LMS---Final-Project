@@ -12,10 +12,10 @@ namespace JobBoardLMS.DATA.EF
     using System;
     using System.Collections.Generic;
     
-    public partial class Cours
+    public partial class Courses
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Cours()
+        public Courses()
         {
             this.CourseCompletions = new HashSet<CourseCompletion>();
             this.Lessons = new HashSet<Lesson>();

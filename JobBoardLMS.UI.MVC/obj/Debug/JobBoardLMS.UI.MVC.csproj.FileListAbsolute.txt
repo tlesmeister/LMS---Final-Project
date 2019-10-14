@@ -103,3 +103,6 @@ C:\Users\Student\Documents\Visual Studio 2017\Projects\12_PROJECT\JobBoardLMS\sr
 C:\Users\Student\Documents\Visual Studio 2017\Projects\12_PROJECT\JobBoardLMS\src\JobBoardLMS.UI.MVC\obj\Debug\JobBoardLMS.UI.MVC.csproj.CopyComplete
 C:\Users\Student\Documents\Visual Studio 2017\Projects\12_PROJECT\JobBoardLMS\src\JobBoardLMS.UI.MVC\obj\Debug\JobBoardLMS.UI.MVC.dll
 C:\Users\Student\Documents\Visual Studio 2017\Projects\12_PROJECT\JobBoardLMS\src\JobBoardLMS.UI.MVC\obj\Debug\JobBoardLMS.UI.MVC.pdb
+C:\Users\Student\Documents\Visual Studio 2017\Projects\12_PROJECT\JobBoardLMS\src\JobBoardLMS.UI.MVC\bin\JobBoardLMS.DATA.EF.dll
+C:\Users\Student\Documents\Visual Studio 2017\Projects\12_PROJECT\JobBoardLMS\src\JobBoardLMS.UI.MVC\bin\JobBoardLMS.DATA.EF.pdb
+C:\Users\Student\Documents\Visual Studio 2017\Projects\12_PROJECT\JobBoardLMS\src\JobBoardLMS.UI.MVC\bin\JobBoardLMS.DATA.EF.dll.config

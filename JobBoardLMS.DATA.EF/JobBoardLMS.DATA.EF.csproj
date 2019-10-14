@@ -53,10 +53,10 @@
     <Compile Include="AspNetUser.cs">
       <DependentUpon>LMSProjectModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Cours.cs">
+    <Compile Include="CourseCompletion.cs">
       <DependentUpon>LMSProjectModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="CourseCompletion.cs">
+    <Compile Include="Courses.cs">
       <DependentUpon>LMSProjectModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Lesson.cs">
@@ -80,14 +80,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>LMSProjectModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Metadata\LMSProjectMetadata.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserDetail.cs">
       <DependentUpon>LMSProjectModel.tt</DependentUpon>
     </Compile>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Metadata\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <EntityDeploy Include="LMSProjectModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>

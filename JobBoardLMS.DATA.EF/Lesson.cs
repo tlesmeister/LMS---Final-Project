@@ -28,7 +28,7 @@ namespace JobBoardLMS.DATA.EF
         public string PdfFileName { get; set; }
         public bool IsActive { get; set; }
     
-        public virtual Cours Courses { get; set; }
+        public virtual Courses Course { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<LessonView> LessonViews { get; set; }
     }
