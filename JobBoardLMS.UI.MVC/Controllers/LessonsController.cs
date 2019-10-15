@@ -64,7 +64,7 @@ namespace JobBoardLMS.UI.MVC.Controllers
                     if (propExts.Contains(ext.ToLower()) && fulImg.ContentLength <= 4194304)
                     {
                         imgName = Guid.NewGuid() + ext;
-                        fulImg.SaveAs(Server.MapPath("~/Content/images" + imgName));
+                        fulImg.SaveAs(Server.MapPath("~/Content/images/" + imgName));
                     }
                     else
                     {
