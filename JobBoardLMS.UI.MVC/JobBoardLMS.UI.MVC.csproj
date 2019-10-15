@@ -214,6 +214,8 @@
     <Content Include="Content\fonts\icomoon\fonts\icomoon.svg" />
     <Content Include="Content\fonts\icomoon\Read Me.txt" />
     <Content Include="Content\fonts\icomoon\style.css" />
+    <Content Include="Content\images\backgroundimage1.jpg" />
+    <Content Include="Content\images\backgroundimage2.jpg" />
     <Content Include="Content\images\bg_1.jpg" />
     <Content Include="Content\images\blog_1.jpg" />
     <Content Include="Content\images\blog_2.jpg" />
