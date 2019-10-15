@@ -1,11 +1,19 @@
 ﻿@model IEnumerable<JobBoardLMS.UI.MVC.Models.ApplicationUser>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Users";
 }
-
-<h2>Index</h2>
-
+<div class="site-section ftco-subscribe-1 site-blocks-cover pb-4" style="background-image: url('../../Content/images/bg_1.jpg')">
+    @* class="site-section ftco-subscribe-1" *@
+    <div class="container">
+        <div class="row align-items-end">
+            <div class="col-lg-7">
+                <h2 class="mb-0">@ViewBag.Title</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+            </div>
+        </div>
+    </div>
+</div>
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
