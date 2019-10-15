@@ -2,8 +2,17 @@
 @{
     ViewBag.Title = "Email Confirmation";
 }
-<h1 class="mvcTitles typeWriter" style="color:#E21F46">@ViewBag.Title</h1>
-
+<div class="site-section ftco-subscribe-1 site-blocks-cover pb-4" style="background-image: url('../../Content/images/bg_1.jpg')">
+    @* class="site-section ftco-subscribe-1" *@
+    <div class="container">
+        <div class="row align-items-end">
+            <div class="col-lg-7">
+                <h2 class="mb-0">@ViewBag.Title</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="emailConfirmation">
     <h4 class="emailConfirmation">We have received your message:</h4>
     <p>@Model.Message</p>

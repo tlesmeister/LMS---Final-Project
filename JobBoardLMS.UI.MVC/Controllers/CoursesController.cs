@@ -88,7 +88,7 @@ namespace JobBoardLMS.UI.MVC.Controllers
             }
             return View(courses);
         }
-
+        [Authorize(Roles ="Admin")]
         // GET: Courses/Delete/5
         public ActionResult Delete(int? id)
         {
