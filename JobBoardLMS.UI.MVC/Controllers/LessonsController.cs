@@ -53,24 +53,34 @@ namespace JobBoardLMS.UI.MVC.Controllers
         {
             if (ModelState.IsValid)
             {
-                #region File Upload Step 2
+                #region File Upload for Create
+                //use a default image if none is provided
                 string imgName = "noImage.png";
-                if (fulImg != null) //if there is a value then they uploaded a file
+                if (fulImg != null)//if it has a value, then they uploaded a file! So we process it
                 {
+                    //get image and assign it a variable
                     imgName = fulImg.FileName;
-                    string ext = imgName.Substring(imgName.LastIndexOf('.'));
-                    //gets extension including the "."
-                    string[] propExts = { ".jpeg", ".jpg", ".gif", ".png" };
-                    if (propExts.Contains(ext.ToLower()) && fulImg.ContentLength <= 4194304)
+                    //declare and assign ext value
+                    string ext = imgName.Substring(imgName.LastIndexOf('.'));//gets extension including the "." (period)
+                    //declare list of valid extensions
+                    string[] goodExts = { ".jpeg", ".jpg", ".gif", ".png" };
+                    //check the ext variable in lowercase vs that valid list and MAX file size 4 MB in ASPNET
+                    if (goodExts.Contains(ext.ToLower()) && (fulImg.ContentLength <= 4194304))
                     {
+                        //if it is in the list rename using a GUID (uniqueness is vital to avoid overwrite)
                         imgName = Guid.NewGuid() + ext;
+                        //save to the webserver (Server.MapPath figures out path)
                         fulImg.SaveAs(Server.MapPath("~/Content/images/" + imgName));
                     }
                     else
                     {
+                        //if you landed here, something went wrong..
+                        //either file size too big, or unacceptable file type
+                        //we have options - throw an error (catch or don't) Or just default to no Image
                         imgName = "noImage.png";
                     }
                 }
+                //regardless of file upload, change the new db record's file field to reflect the name
                 lesson.PdfFileName = imgName;
                 #endregion
                 db.Lessons.Add(lesson);
@@ -107,8 +117,8 @@ namespace JobBoardLMS.UI.MVC.Controllers
         {
             if (ModelState.IsValid)
             {
-                #region File upload for edit
-                if (fulImage != null)
+                #region File Upload for EDIT
+                if (fulImage != null)//if it has a value, then they uploaded a file! So we process it
                 {
                     //get image and assign to variable
                     string imgName = fulImage.FileName;
@@ -126,10 +136,10 @@ namespace JobBoardLMS.UI.MVC.Controllers
                         fulImage.SaveAs(Server.MapPath("~/Content/images/" + imgName));
 
                         //HOUSEKEEPING for the edit: Delete old file on record if not the default
-                        if (fulImage.FileName != null && lesson.PdfFileName != "noImage.png")
+                        if (lesson.PdfFileName != null && lesson.PdfFileName != "noImage.png")
                         {
                             //remove original file 
-                            System.IO.File.Delete(Server.MapPath("~/Content/images/" + fulImage.FileName));
+                            System.IO.File.Delete(Server.MapPath("~/Content/images/" + lesson.PdfFileName));
                         }
 
                         //only if file upload OK, file upload, change the new db record's file field to reflect the name
@@ -137,11 +147,17 @@ namespace JobBoardLMS.UI.MVC.Controllers
                     }
                     else
                     {
+                        //if you landed here, something went wrong..
+                        //either file size too big, or unacceptable file type
+                        //we have options - throw an error (catch or don't) Or just default to no Image
+                        // imgName = "noImage.png";
+                        //FOR EDIT, throw error or remove the ELSE and leave image the way it was 
                         throw new ApplicationException("Incorrect file type (use PNG, JPG, Or GIF), or file exceeds 4MB (reduce and try again)");
                     }//end if tree for good exts and file size
                 }//end if fup exists
-            #endregion
-            db.Entry(lesson).State = EntityState.Modified;
+
+                #endregion
+                db.Entry(lesson).State = EntityState.Modified;
             db.SaveChanges();
             return RedirectToAction("Index");
         }

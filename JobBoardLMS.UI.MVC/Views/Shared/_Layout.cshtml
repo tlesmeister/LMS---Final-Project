@@ -104,14 +104,13 @@
                                             @Html.ActionLink("RolesAdmin", "Index", "RolesAdmin")
                                             @Html.ActionLink("UsersAdmin", "Index", "UsersAdmin")
                                         </ul>
-
                                     </li>
                                 }
                                 @if (Request.IsAuthenticated && User.IsInRole("Manager"))
                                 {
                                     <li class="list-inline-item">
                                         @Html.ActionLink("Courses", "Index", "Courses")
-                                        @Html.ActionLink("Course Completion", "Index", "CourseCompletion")
+                                        @Html.ActionLink("Course Completion", "Index", "CourseCompletions")
                                         @Html.ActionLink("Lessons", "Index", "Lessons")
                                         @Html.ActionLink("Lesson Views", "Index", "LessonViews")
                                         @Html.ActionLink("User Details", "Index", "UserDetails")
@@ -120,8 +119,7 @@
                                 @if (Request.IsAuthenticated && User.IsInRole("Employee"))
                                 {
                                     <li class="list-inline-item">
-                                        @Html.ActionLink("Courses", "Index", "Courses")
-                                        @Html.ActionLink("Course Completion", "Index", "CourseCompletion")
+                                        @Html.ActionLink("Course Completion", "Index", "CourseCompletions")
                                         @Html.ActionLink("Lessons", "Index", "Lessons")
                                         @Html.ActionLink("Lesson Views", "Index", "LessonViews")
                                     </li>
