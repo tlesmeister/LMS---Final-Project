@@ -194,6 +194,7 @@
     <Content Include="Content\css\bootstrap.min.css" />
     <Content Include="Content\css\bootstrap\bootstrap-grid.css" />
     <Content Include="Content\css\bootstrap\bootstrap-reboot.css" />
+    <Content Include="Content\css\customstyle.css" />
     <Content Include="Content\css\jquery-ui.css" />
     <Content Include="Content\css\jquery.fancybox.min.css" />
     <Content Include="Content\css\jquery.mb.YTPlayer.min.css" />
@@ -235,6 +236,7 @@
     <Content Include="Content\images\logo.jpg" />
     <Content Include="Content\images\logo.png" />
     <Content Include="Content\images\mvc.jpg" />
+    <Content Include="Content\images\mylogo.jpg" />
     <Content Include="Content\images\person_1.jpg" />
     <Content Include="Content\images\person_2.jpg" />
     <Content Include="Content\images\person_3.jpg" />
@@ -276,6 +278,7 @@
     <Content Include="_Archive\css\bootstrap.min.css" />
     <Content Include="_Archive\css\bootstrap\bootstrap-grid.css" />
     <Content Include="_Archive\css\bootstrap\bootstrap-reboot.css" />
+    <Content Include="_Archive\css\customstyle.css" />
     <Content Include="_Archive\css\jquery-ui.css" />
     <Content Include="_Archive\css\jquery.fancybox.min.css" />
     <Content Include="_Archive\css\jquery.mb.YTPlayer.min.css" />
