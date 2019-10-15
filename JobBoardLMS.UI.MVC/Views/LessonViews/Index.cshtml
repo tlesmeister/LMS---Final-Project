@@ -18,36 +18,56 @@
     @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.UserID)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DateViewed)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Lessons.LessonTitle)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.UserID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DateViewed)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Lessons.LessonTitle)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.LessonViewID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.LessonViewID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.LessonViewID })
-        </td>
-    </tr>
-}
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.UserID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateViewed)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Lessons.LessonTitle)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateViewed)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Lessons.LessonTitle)
+            </td>
+            @if (User.IsInRole("Admin"))
+            {
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.LessonViewID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.LessonViewID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.LessonViewID })
+                </td>
+            }
+            @if (User.IsInRole("Manager"))
+            {
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.LessonViewID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.LessonViewID })
+                </td>
+            }
+            @if (User.IsInRole("Employee"))
+            {
+                <td>
+                    @Html.ActionLink("Details", "Details", new { id = item.LessonViewID })
+                </td>
+            }
+        </tr>
+        }
+    </tbody>
 
 </table>
