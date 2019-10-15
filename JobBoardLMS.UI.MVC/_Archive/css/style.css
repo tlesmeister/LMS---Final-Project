@@ -564,20 +564,24 @@ h1, h2, h3, h4, h5,
 .intro-section {
   background-size: cover;
   position: relative; }
-  .intro-section, .intro-section .container .row {
-    height: 100vh;
-    min-height: 900px; }
-  .intro-section:before {
-    content: "";
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    background: #222;
-    opacity: .7;
-    border-bottom-right-radius: 0px;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat; }
+    .intro-section, .intro-section .container .row {
+        height: 100vh;
+        /*min-height: 900px;*/
+        min-height: 400px;
+    }
+        .intro-section:before {
+            content: "";
+            position: absolute;
+            /*height: 100%;*/
+            width: 100%;
+            height: 50%;
+            background: #222;
+            opacity: .7;
+            border-bottom-right-radius: 0px;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
     @media (max-width: 991.98px) {
       .intro-section:before {
         width: 100%; } }

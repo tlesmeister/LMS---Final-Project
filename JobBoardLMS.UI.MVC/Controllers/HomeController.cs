@@ -16,7 +16,8 @@ namespace JobBoardLMS.UI.MVC.Controllers
         }
 
         [HttpGet]
-        [Authorize]
+        //Commented out for testing purposes. 
+        //[Authorize]
         public ActionResult About()
         {
             ViewBag.Message = "Your app description page.";
