@@ -75,27 +75,54 @@
                                         @Html.ActionLink("Our Teachers", "About", "Home")
                                         @Html.ActionLink("Our School", "About", "Home")
                                         @*<li><a href="@Url.Action("", "")">Our Teachers</a></li>
-                                            <li><a href="@Url.Action("About", "Home")">Our School</a></li>*@
+                <li><a href="@Url.Action("About", "Home")">Our School</a></li>*@
                                     </ul>
                                 </li>
                                 @*<li>
-                                    <a href="@Url.Action("Admissions", "Home")" class="nav-link text-left">Admissions</a>
-                                </li>*@
-                                <li>
-                                    <a href="@Url.Action("Index", "Courses")" class="nav-link text-left">Courses</a>
-                                </li>
+            <a href="@Url.Action("Admissions", "Home")" class="nav-link text-left">Admissions</a>
+        </li>*@
+                                @*<li>
+            <a href="@Url.Action("Index", "Courses")" class="nav-link text-left">Courses</a>
+        </li>*@
                                 <li>
                                     <a href="@Url.Action("Contact", "Home")" class="nav-link text-left">Contact</a>
                                 </li>
                                 <li class="list-inline-item"> @Html.Partial("_LoginPartial")</li>
                                 @if (Request.IsAuthenticated && User.IsInRole("Admin"))
                                 {
+                                <li>
+                                    @Html.ActionLink("Courses", "Index", "Courses")
+                                    @Html.ActionLink("Course Completion", "Index", "CourseCompletions")
+                                    @Html.ActionLink("Lessons", "Index", "Lessons")
+                                    @Html.ActionLink("Lesson Views", "Index", "LessonViews")
+                                    @Html.ActionLink("User Details", "Index", "UserDetails")
+                                </li>
                                     <li class="has-children ">
                                         @Html.ActionLink("Admin", "Index", "UserDetails")
                                         <ul class="dropdown">
                                             @Html.ActionLink("RolesAdmin", "Index", "RolesAdmin")
                                             @Html.ActionLink("UsersAdmin", "Index", "UsersAdmin")
                                         </ul>
+
+                                    </li>
+                                }
+                                @if (Request.IsAuthenticated && User.IsInRole("Manager"))
+                                {
+                                    <li class="list-inline-item">
+                                        @Html.ActionLink("Courses", "Index", "Courses")
+                                        @Html.ActionLink("Course Completion", "Index", "CourseCompletion")
+                                        @Html.ActionLink("Lessons", "Index", "Lessons")
+                                        @Html.ActionLink("Lesson Views", "Index", "LessonViews")
+                                        @Html.ActionLink("User Details", "Index", "UserDetails")
+                                    </li>
+                                }
+                                @if (Request.IsAuthenticated && User.IsInRole("Employee"))
+                                {
+                                    <li class="list-inline-item">
+                                        @Html.ActionLink("Courses", "Index", "Courses")
+                                        @Html.ActionLink("Course Completion", "Index", "CourseCompletion")
+                                        @Html.ActionLink("Lessons", "Index", "Lessons")
+                                        @Html.ActionLink("Lesson Views", "Index", "LessonViews")
                                     </li>
                                 }
                             </ul>

@@ -13,14 +13,14 @@ namespace JobBoardLMS.UI.MVC.Controllers
     public class CourseCompletionsController : Controller
     {
         private LMSProjectEntities db = new LMSProjectEntities();
-
+        [Authorize(Roles = "Admin,Manager,Employee")]
         // GET: CourseCompletions
         public ActionResult Index()
         {
             var courseCompletions = db.CourseCompletions.Include(c => c.Course);
             return View(courseCompletions.ToList());
         }
-
+        [Authorize(Roles = "Admin,Manager")]
         // GET: CourseCompletions/Details/5
         public ActionResult Details(int? id)
         {
@@ -35,14 +35,14 @@ namespace JobBoardLMS.UI.MVC.Controllers
             }
             return View(courseCompletion);
         }
-
+        [Authorize(Roles ="Admin")]
         // GET: CourseCompletions/Create
         public ActionResult Create()
         {
             ViewBag.CourseID = new SelectList(db.Courses1, "CourseID", "CourseName");
             return View();
         }
-
+        [Authorize(Roles = "Admin")]
         // POST: CourseCompletions/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
@@ -60,7 +60,7 @@ namespace JobBoardLMS.UI.MVC.Controllers
             ViewBag.CourseID = new SelectList(db.Courses1, "CourseID", "CourseName", courseCompletion.CourseID);
             return View(courseCompletion);
         }
-
+        [Authorize(Roles = "Admin")]
         // GET: CourseCompletions/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -76,7 +76,7 @@ namespace JobBoardLMS.UI.MVC.Controllers
             ViewBag.CourseID = new SelectList(db.Courses1, "CourseID", "CourseName", courseCompletion.CourseID);
             return View(courseCompletion);
         }
-
+        [Authorize(Roles = "Admin")]
         // POST: CourseCompletions/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
@@ -93,7 +93,7 @@ namespace JobBoardLMS.UI.MVC.Controllers
             ViewBag.CourseID = new SelectList(db.Courses1, "CourseID", "CourseName", courseCompletion.CourseID);
             return View(courseCompletion);
         }
-
+        [Authorize(Roles = "Admin")]
         // GET: CourseCompletions/Delete/5
         public ActionResult Delete(int? id)
         {
@@ -108,7 +108,7 @@ namespace JobBoardLMS.UI.MVC.Controllers
             }
             return View(courseCompletion);
         }
-
+        [Authorize(Roles = "Admin")]
         // POST: CourseCompletions/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]

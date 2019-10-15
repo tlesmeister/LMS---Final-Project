@@ -13,13 +13,13 @@ namespace JobBoardLMS.UI.MVC.Controllers
     public class UserDetailsController : Controller
     {
         private LMSProjectEntities db = new LMSProjectEntities();
-
+        [Authorize(Roles ="Admin,Manager")]
         // GET: UserDetails
         public ActionResult Index()
         {
             return View(db.UserDetails.ToList());
         }
-
+        [Authorize(Roles = "Admin,Manager")]
         // GET: UserDetails/Details/5
         public ActionResult Details(string id)
         {
@@ -34,13 +34,13 @@ namespace JobBoardLMS.UI.MVC.Controllers
             }
             return View(userDetail);
         }
-
+        [Authorize(Roles = "Admin")]
         // GET: UserDetails/Create
         public ActionResult Create()
         {
             return View();
         }
-
+        [Authorize(Roles = "Admin")]
         // POST: UserDetails/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
@@ -57,7 +57,7 @@ namespace JobBoardLMS.UI.MVC.Controllers
 
             return View(userDetail);
         }
-
+        [Authorize(Roles = "Admin")]
         // GET: UserDetails/Edit/5
         public ActionResult Edit(string id)
         {
@@ -72,7 +72,7 @@ namespace JobBoardLMS.UI.MVC.Controllers
             }
             return View(userDetail);
         }
-
+        [Authorize(Roles = "Admin")]
         // POST: UserDetails/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
@@ -88,7 +88,7 @@ namespace JobBoardLMS.UI.MVC.Controllers
             }
             return View(userDetail);
         }
-
+        [Authorize(Roles = "Admin")]
         // GET: UserDetails/Delete/5
         public ActionResult Delete(string id)
         {
@@ -103,7 +103,7 @@ namespace JobBoardLMS.UI.MVC.Controllers
             }
             return View(userDetail);
         }
-
+        [Authorize(Roles = "Admin")]
         // POST: UserDetails/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]

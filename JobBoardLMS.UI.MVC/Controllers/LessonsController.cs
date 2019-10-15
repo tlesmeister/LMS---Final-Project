@@ -13,14 +13,14 @@ namespace JobBoardLMS.UI.MVC.Controllers
     public class LessonsController : Controller
     {
         private LMSProjectEntities db = new LMSProjectEntities();
-
+        [Authorize(Roles ="Admin,Manager,Employee")]
         // GET: Lessons
         public ActionResult Index()
         {
             var lessons = db.Lessons.Include(l => l.Course);
             return View(lessons.ToList());
         }
-
+        [Authorize(Roles = "Admin,Manager,Employee")]
         // GET: Lessons/Details/5
         public ActionResult Details(int? id)
         {
@@ -35,7 +35,7 @@ namespace JobBoardLMS.UI.MVC.Controllers
             }
             return View(lesson);
         }
-        [Authorize(Roles ="Admin")]
+        [Authorize(Roles ="Admin, Manager")]
         // GET: Lessons/Create
         public ActionResult Create()
         {
@@ -81,7 +81,7 @@ namespace JobBoardLMS.UI.MVC.Controllers
             ViewBag.CourseID = new SelectList(db.Courses1, "CourseID", "CourseName", lesson.CourseID);
             return View(lesson);
         }
-
+        [Authorize(Roles = "Admin")]
         // GET: Lessons/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -97,7 +97,7 @@ namespace JobBoardLMS.UI.MVC.Controllers
             ViewBag.CourseID = new SelectList(db.Courses1, "CourseID", "CourseName", lesson.CourseID);
             return View(lesson);
         }
-
+        [Authorize(Roles = "Admin")]
         // POST: Lessons/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.

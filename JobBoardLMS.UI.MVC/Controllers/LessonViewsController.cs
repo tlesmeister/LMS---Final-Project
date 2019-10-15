@@ -13,14 +13,14 @@ namespace JobBoardLMS.UI.MVC.Controllers
     public class LessonViewsController : Controller
     {
         private LMSProjectEntities db = new LMSProjectEntities();
-
+        [Authorize(Roles ="Admin,Manager,Employee")]
         // GET: LessonViews
         public ActionResult Index()
         {
             var lessonViews = db.LessonViews.Include(l => l.Lessons);
             return View(lessonViews.ToList());
         }
-
+        [Authorize(Roles = "Admin,Manager,Employee")]
         // GET: LessonViews/Details/5
         public ActionResult Details(int? id)
         {
@@ -35,14 +35,14 @@ namespace JobBoardLMS.UI.MVC.Controllers
             }
             return View(lessonView);
         }
-
+        [Authorize(Roles = "Admin,Manager")]
         // GET: LessonViews/Create
         public ActionResult Create()
         {
             ViewBag.LessonID = new SelectList(db.Lessons, "LessonID", "LessonTitle");
             return View();
         }
-
+        [Authorize(Roles = "Admin,Manager")]
         // POST: LessonViews/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
@@ -60,7 +60,7 @@ namespace JobBoardLMS.UI.MVC.Controllers
             ViewBag.LessonID = new SelectList(db.Lessons, "LessonID", "LessonTitle", lessonView.LessonID);
             return View(lessonView);
         }
-
+        [Authorize(Roles = "Admin,Manager")]
         // GET: LessonViews/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -76,7 +76,7 @@ namespace JobBoardLMS.UI.MVC.Controllers
             ViewBag.LessonID = new SelectList(db.Lessons, "LessonID", "LessonTitle", lessonView.LessonID);
             return View(lessonView);
         }
-
+        [Authorize(Roles = "Admin,Manager")]
         // POST: LessonViews/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
@@ -93,7 +93,7 @@ namespace JobBoardLMS.UI.MVC.Controllers
             ViewBag.LessonID = new SelectList(db.Lessons, "LessonID", "LessonTitle", lessonView.LessonID);
             return View(lessonView);
         }
-
+        [Authorize(Roles = "Admin")]
         // GET: LessonViews/Delete/5
         public ActionResult Delete(int? id)
         {
@@ -108,7 +108,7 @@ namespace JobBoardLMS.UI.MVC.Controllers
             }
             return View(lessonView);
         }
-
+        [Authorize(Roles = "Admin")]
         // POST: LessonViews/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
