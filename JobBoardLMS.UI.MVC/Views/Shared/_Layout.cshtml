@@ -70,13 +70,19 @@
 
                                 @if (Request.IsAuthenticated && User.IsInRole("Admin"))
                                 {
-                                    <li>
+                                    <li class="has-children ">
                                         @Html.ActionLink("Courses", "Index", "Courses")
-                                        @Html.ActionLink("Course Completion", "Index", "CourseCompletions")
-                                        @Html.ActionLink("Lessons", "Index", "Lessons")
-                                        @Html.ActionLink("Lesson Views", "Index", "LessonViews")
-                                        @Html.ActionLink("User Details", "Index", "UserDetails")
+                                        <ul class="dropdown">
+                                            @Html.ActionLink("Course Completion", "Index", "CourseCompletions")
+                                        </ul>
                                     </li>
+                                    <li class="has-children ">
+                                        @Html.ActionLink("Lessons", "Index", "Lessons")
+                                        <ul class="dropdown">
+                                            @Html.ActionLink("Lesson Views", "Index", "LessonViews")
+                                        </ul>
+                                    </li>
+
                                     <li class="has-children ">
                                         @Html.ActionLink("Admin", "Index", "UserDetails")
                                         <ul class="dropdown">
@@ -84,32 +90,41 @@
                                             @Html.ActionLink("UsersAdmin", "Index", "UsersAdmin")
                                         </ul>
                                     </li>
+                                    <li>@Html.ActionLink("User Details", "Index", "UserDetails")</li>
                                 }
                                 @if (Request.IsAuthenticated && User.IsInRole("Manager"))
                                 {
-                                    <li class="list-inline-item">
-                                        @Html.ActionLink("Courses", "Index", "Courses")
-                                        @Html.ActionLink("Course Completion", "Index", "CourseCompletions")
-                                        @Html.ActionLink("Lessons", "Index", "Lessons")
-                                        @Html.ActionLink("Lesson Views", "Index", "LessonViews")
-                                        @Html.ActionLink("User Details", "Index", "UserDetails")
-                                    </li>
+                                    {
+                                        <li class="has-children ">
+                                            @Html.ActionLink("Courses", "Index", "Courses")
+                                            <ul class="dropdown">
+                                                @Html.ActionLink("Course Completion", "Index", "CourseCompletions")
+                                            </ul>
+                                        </li>
+                                        <li class="has-children ">
+                                            @Html.ActionLink("Lessons", "Index", "Lessons")
+                                            <ul class="dropdown">
+                                                @Html.ActionLink("Lesson Views", "Index", "LessonViews")
+                                            </ul>
+                                        </li>
+                                    }
                                 }
                                 @if (Request.IsAuthenticated && User.IsInRole("Employee"))
                                 {
                                     <li>
-                                            @Html.ActionLink("Course Completion", "Index", "CourseCompletions")
-                                            @Html.ActionLink("Lessons", "Index", "Lessons")
-                                            @Html.ActionLink("Lesson Views", "Index", "LessonViews")
+                                        @Html.ActionLink("Course Completion", "Index", "CourseCompletions")
+                                        @Html.ActionLink("Lessons", "Index", "Lessons")
+                                        @Html.ActionLink("Lesson Views", "Index", "LessonViews")
                                     </li>
 
                                 }
                                 <li>
                                     @Html.ActionLink("Home", "Index", "Home")
-                                
+
                                     @Html.ActionLink("About Us", "About", "Home")
-                                    <a href="@Url.Action("Contact", "Home")" class="nav-link text-left">Contact</a></li>
-                                @Html.Partial("_LoginPartial")
+                                    <a href="@Url.Action("Contact", "Home")" class="nav-link text-left">Contact</a>
+                                </li>
+                                <li>@Html.Partial("_LoginPartial")</li>
                             </ul>
                             @*@Html.Partial("_LoginPartial")*@
 
