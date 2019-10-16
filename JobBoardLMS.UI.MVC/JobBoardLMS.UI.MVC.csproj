@@ -257,6 +257,7 @@
     <Content Include="Content\js\jquery.mb.YTPlayer.min.js" />
     <Content Include="Content\js\jquery.stellar.min.js" />
     <Content Include="Content\js\jquery.sticky.js" />
+    <Content Include="Content\js\lms.js" />
     <Content Include="Content\js\main.js" />
     <Content Include="Content\js\mediaelement-and-player.min.js" />
     <Content Include="Content\js\owl.carousel.min.js" />
@@ -461,6 +462,7 @@
     <Content Include="Views\LessonViews\Edit.cshtml" />
     <Content Include="Views\LessonViews\Index.cshtml" />
     <Content Include="Views\Home\EmailConfirmation.cshtml" />
+    <Content Include="Views\Lessons\EnrolledLessons.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
