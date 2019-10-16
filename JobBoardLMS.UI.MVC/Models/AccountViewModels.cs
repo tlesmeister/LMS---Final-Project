@@ -79,6 +79,13 @@ namespace JobBoardLMS.UI.MVC.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+        //----ADDED for custom user registration (additional UserDetails)
+        [Required]
+        public string FirstName { get; set; }
+
+        [Required]
+        public string LastName { get; set; }
+
     }
 
     public class ResetPasswordViewModel

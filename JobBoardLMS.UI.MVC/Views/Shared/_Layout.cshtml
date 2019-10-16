@@ -68,7 +68,12 @@
                     <div class="mr-auto">
                         <nav class="site-navigation position-relative text-right" role="navigation">
                             <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
+                                <li>
+                                    @Html.ActionLink("Home", "Index", "Home")
 
+                                    @Html.ActionLink("About Us", "About", "Home")
+                                    <a href="@Url.Action("Contact", "Home")" class="nav-link text-left">Contact</a>
+                                </li>
                                 @if (Request.IsAuthenticated && User.IsInRole("Admin"))
                                 {
                                     <li class="has-children ">
@@ -114,17 +119,16 @@
                                 {
                                     <li>
                                         @Html.ActionLink("Course Completion", "Index", "CourseCompletions")
+                                    <li class="has-children ">
                                         @Html.ActionLink("Lessons", "Index", "Lessons")
-                                        @Html.ActionLink("Lesson Views", "Index", "LessonViews")
+                                        <ul class="dropdown">
+                                            @Html.ActionLink("Lesson Views", "Index", "LessonViews")
+                                        </ul>
+                                    </li>
                                     </li>
 
                                 }
-                                <li>
-                                    @Html.ActionLink("Home", "Index", "Home")
 
-                                    @Html.ActionLink("About Us", "About", "Home")
-                                    <a href="@Url.Action("Contact", "Home")" class="nav-link text-left">Contact</a>
-                                </li>
                                 <li>@Html.Partial("_LoginPartial")</li>
                             </ul>
                             @*@Html.Partial("_LoginPartial")*@
