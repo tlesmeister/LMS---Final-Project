@@ -23,8 +23,10 @@ namespace JobBoardLMS.UI.MVC
                       "~/Scripts/respond.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/css/bootstrap.css"
+                      , "~/Content/css/jquery.dataTables.min.css" //added for jQuery datatables style after Nuget
+                      , "~/Content/PagedList.css" //Added for MVC Paging after Nuget
+                      , "~/Content/css/site.css"));
         }
     }
 }

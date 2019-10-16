@@ -97,7 +97,7 @@
 
 @if (User.IsInRole("Employee"))
 {
-    <table class="table">
+    <table class="table" id="simpleTable">
         <thead>
             <tr>
                 <th>
@@ -201,3 +201,18 @@
         </tbody>
     </table>
 }
+
+    <script>
+        $(function () {
+            
+
+            $("#date-picker").datepicker({
+                changeMonth: true,
+                changeYear: true,
+                yearRange: "0:3000"
+            });
+
+            $('#simpleTable').DataTable();
+
+        });
+    </script>
