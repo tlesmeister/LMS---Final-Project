@@ -21,28 +21,6 @@ namespace JobBoardLMS.UI.MVC.Controllers
             return View(lessons.ToList());
         }
 
-
-        public ActionResult EnrolledLessons()
-        {
-            
-            return View();
-        }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         [Authorize(Roles = "Admin,Manager,Employee")]
         // GET: Lessons/Details/5
         public ActionResult Details(int? id)

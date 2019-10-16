@@ -176,6 +176,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CourseCompletionsController.cs" />
     <Compile Include="Controllers\CoursesController.cs" />
+    <Compile Include="Controllers\FiltersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LessonsController.cs" />
     <Compile Include="Controllers\LessonViewsController.cs" />
@@ -554,10 +555,10 @@
     <Content Include="Views\LessonViews\Edit.cshtml" />
     <Content Include="Views\LessonViews\Index.cshtml" />
     <Content Include="Views\Home\EmailConfirmation.cshtml" />
-    <Content Include="Views\Lessons\EnrolledLessons.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Filters\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
