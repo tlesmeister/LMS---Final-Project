@@ -23,7 +23,7 @@
     <p>
         @Html.ActionLink("Create New", "Create")
     </p>
-    <table class="table">
+    <table class="table data-table table-striped">
         <thead>
             <tr>
                 <th>
@@ -97,7 +97,7 @@
 
 @if (User.IsInRole("Employee"))
 {
-    <table class="table" id="simpleTable">
+    <table class="table data-table table-striped" >
         <thead>
             <tr>
                 <th>
@@ -150,7 +150,7 @@
 
 @if (User.IsInRole("Manager"))
 {
-    <table class="table">
+    <table class="table data-table table-striped">
         <thead>
             <tr>
                 <th>
@@ -202,17 +202,16 @@
     </table>
 }
 
+@section scripts{
     <script>
-        $(function () {
-            
-
-            $("#date-picker").datepicker({
-                changeMonth: true,
-                changeYear: true,
-                yearRange: "0:3000"
-            });
-
-            $('#simpleTable').DataTable();
-
+        //apply the jQuery plugin
+        $(document).ready(function () {
+            $(".data-table").DataTable();
         });
+        //$("#date-picker").datepicker({
+        //    changeMonth: true,
+        //    changeYear: true,
+        //    yearRange: "0:3000"
+        //});
     </script>
+}
