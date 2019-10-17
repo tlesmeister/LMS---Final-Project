@@ -56,33 +56,33 @@ namespace JobBoardLMS.UI.MVC.Controllers
             {
                 #region File Upload for Create
                 //use a default image if none is provided
-                string imgName = "noImage.pdf";
+                string pdfName = "noName.pdf";
                 if (fulImg != null)//if it has a value, then they uploaded a file! So we process it
                 {
                     //get image and assign it a variable
-                    imgName = fulImg.FileName;
+                    pdfName = fulImg.FileName;
                     //declare and assign ext value
-                    string ext = imgName.Substring(imgName.LastIndexOf('.'));//gets extension including the "." (period)
+                    string ext = pdfName.Substring(pdfName.LastIndexOf('.'));//gets extension including the "." (period)
                     //declare list of valid extensions
                     string[] goodExts = { ".pdf" };
                     //check the ext variable in lowercase vs that valid list and MAX file size 4 MB in ASPNET
                     if (goodExts.Contains(ext.ToLower()) && (fulImg.ContentLength <= 4194304))
                     {
                         //if it is in the list rename using a GUID (uniqueness is vital to avoid overwrite)
-                        imgName = Guid.NewGuid() + ext;
+                        pdfName = Guid.NewGuid() + ext;
                         //save to the webserver (Server.MapPath figures out path)
-                        fulImg.SaveAs(Server.MapPath("~/Content/images/" + imgName));
+                        fulImg.SaveAs(Server.MapPath("~/Content/images/" + pdfName));
                     }
                     else
                     {
                         //if you landed here, something went wrong..
                         //either file size too big, or unacceptable file type
                         //we have options - throw an error (catch or don't) Or just default to no Image
-                        imgName = "noImage.pdf";
+                        pdfName = "noImage.pdf";
                     }
                 }
                 //regardless of file upload, change the new db record's file field to reflect the name
-                lesson.PdfFileName = imgName;
+                lesson.PdfFileName = pdfName;
                 #endregion
                 db.Lessons.Add(lesson);
                 db.SaveChanges();
@@ -122,19 +122,19 @@ namespace JobBoardLMS.UI.MVC.Controllers
                 if (fulImage != null)//if it has a value, then they uploaded a file! So we process it
                 {
                     //get image and assign to variable
-                    string imgName = fulImage.FileName;
+                    string pdfName = fulImage.FileName;
 
                     //declare and assign ext value
-                    string ext = imgName.Substring(imgName.LastIndexOf('.'));//gets extension including the "." (period)
+                    string ext = pdfName.Substring(pdfName.LastIndexOf('.'));//gets extension including the "." (period)
                     //declare list of valid extensions
                     string[] goodExts = { ".pdf" };
                     //check the ext variable in lowercase vs that valid list and MAX file size 4 MB in ASPNET
                     if (goodExts.Contains(ext.ToLower()) && (fulImage.ContentLength <= 4194304))
                     {
                         //if it is in the list rename using a GUID (uniqueness is vital to avoid overwrite)
-                        imgName = Guid.NewGuid() + ext;
+                        pdfName = Guid.NewGuid() + ext;
                         //save to the webserver (Server.MapPath figures out path)
-                        fulImage.SaveAs(Server.MapPath("~/Content/images/" + imgName));
+                        fulImage.SaveAs(Server.MapPath("~/Content/images/" + pdfName));
 
                         //HOUSEKEEPING for the edit: Delete old file on record if not the default
                         if (lesson.PdfFileName != null && lesson.PdfFileName != "noImage.pdf")
@@ -144,14 +144,13 @@ namespace JobBoardLMS.UI.MVC.Controllers
                         }
 
                         //only if file upload OK, file upload, change the new db record's file field to reflect the name
-                        lesson.PdfFileName = imgName;
+                        lesson.PdfFileName = pdfName;
                     }
                     else
                     {
                         //if you landed here, something went wrong..
                         //either file size too big, or unacceptable file type
-                        //we have options - throw an error (catch or don't) Or just default to no Image
-                        // imgName = "noImage.png";
+                        //we have options - throw an error (catch or don't) Or just default to no 
                         //FOR EDIT, throw error or remove the ELSE and leave image the way it was 
                         throw new ApplicationException("Incorrect file type (use PDF), or file exceeds 4MB (reduce and try again)");
                     }//end if tree for good exts and file size

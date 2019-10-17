@@ -41,14 +41,17 @@
 
             <dd>
                 @Html.DisplayFor(model => model.VideoURL)
+                @*<iframe width="560" height="315" src="https://www.youtube.com/embed/yfoY53QXEnI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>*@
             </dd>
 
             <dt>
-                @Html.DisplayNameFor(model => model.PdfFileName)
+                @*@Html.DisplayNameFor(model => model.PdfFileName)*@
+                <a href="@Url.Content("~/Content/images/@Model.PdfFileName")">PDF</a>
             </dt>
 
             <dd>
-                @Html.DisplayFor(model => model.PdfFileName)
+                @*@Html.DisplayFor(model => model.PdfFileName)*@
+                <a href="@Url.Content("~/Content/images/@Model.PdfFileName")">PDF</a>
             </dd>
 
             <dt>
