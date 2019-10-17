@@ -70,9 +70,7 @@
                     </td>
 
                     <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.LessonID }) |
-                        @Html.ActionLink("Details", "Details", new { id = item.LessonID }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.LessonID })
+                        <button>@Html.ActionLink("Edit", "Edit", new { id = item.LessonID })</button><button>@Html.ActionLink("Details", "Details", new { id = item.LessonID })</button><button>@Html.ActionLink("Delete", "Delete", new { id = item.LessonID })</button>
                     </td>
 
                 </tr>
@@ -101,8 +99,8 @@
                     @*@Html.DisplayNameFor(model => model.PdfFileName)*@
                 </th>
                 @*<th>
-                    @Html.DisplayNameFor(model => model.Course.CourseName)
-                </th>*@
+                        @Html.DisplayNameFor(model => model.Course.CourseName)
+                    </th>*@
 
             </tr>
         </thead>
@@ -126,7 +124,7 @@
                             @Html.DisplayFor(modelItem => item.Course.CourseName)
                         </td>*@
                     <td>
-                        @Html.ActionLink("Details", "Details", new { id = item.LessonID })
+                        <button>@Html.ActionLink("Enroll", "Details", new { id = item.LessonID })</button>
                     </td>
                 </tr>
             }
@@ -184,8 +182,7 @@
                         @Html.DisplayFor(modelItem => item.Course.CourseName)
                     </td>
                     <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.LessonID }) |
-                        @Html.ActionLink("Details", "Details", new { id = item.LessonID })
+                        <button>@Html.ActionLink("Edit", "Edit", new { id = item.LessonID })</button><button>@Html.ActionLink("Details", "Details", new { id = item.LessonID })</button>
                     </td>
                 </tr>
             }
@@ -196,13 +193,14 @@
 @section scripts{
     <script>
         //apply the jQuery plugin
-        $(document).ready(function () {
-            $(".data-table").DataTable();
-        });
-                //$("#date-picker").datepicker({
-                //    changeMonth: true,
-                //    changeYear: true,
-                //    yearRange: "0:3000"
-                //});
+            $(document).ready(function () {
+                $(".data-table").DataTable();
+            });
+                    //$("#date-picker").datepicker({
+                    //    changeMonth: true,
+                    //    changeYear: true,
+                    //    yearRange: "0:3000"
+                    //});
+        
     </script>
 }

@@ -14,10 +14,30 @@
         </div>
     </div>
 </div>
-<div class="col-md-6" style="text-align:center">
-    <div>
-        @*<h4>Lesson</h4>
-            <hr />*@
+@*<div style="text-align:center">
+        <p>
+            Please watch the video or read the PDF to mark this course as complete.
+        </p>
+    </div>*@
+<div style="text-align:center">
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Course.CourseName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Course.CourseName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.LessonTitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LessonTitle)
+        </dd>
+    </dl>
+</div>
+@*<div style="text-align:center">
         <dl class="dl-horizontal">
             <dt>
                 @Html.DisplayNameFor(model => model.LessonTitle)
@@ -26,63 +46,123 @@
             <dd>
                 @Html.DisplayFor(model => model.LessonTitle)
             </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.Introduction)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Introduction)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.VideoURL)
-            </dt>
-
-            <dd>
-                @*@Html.DisplayFor(model => model.VideoURL)*@
-                <video controls="controls">
-                    <source src="@Model.VideoURL" target="_blank" />
-                </video>
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.PdfFileName)
-            </dt>
-
-            <dd>
-                @*@Html.DisplayFor(model => model.PdfFileName)*@
-                <a href="~/Content/images/@Model.PdfFileName" target="_blank">@Model.PdfFileName</a>
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.IsActive)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.IsActive)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.Course.CourseName)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Course.CourseName)
-            </dd>
-
         </dl>
-    </div>
+    </div>*@
+<div class="col-md-12 lessonVideos">
+    <iframe id="YouTubevideo" src="https://www.youtube.com/v=@Model.VideoURL" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    @*<iframe width="560" height="315" src="https://www.youtube.com/embed/UB1O30fR-EE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>*@
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.LessonID }) |
-    @Html.ActionLink("Back to List", "Index")
+
+
+
+<div style="text-align:center">
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Introduction)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Introduction)
+        </dd>
+    </dl>
+</div>
+
+<div style="text-align:center">
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PdfFileName)
+        </dt>
+
+        <dd>
+            @*@Html.DisplayFor(model => model.PdfFileName)*@
+            <a href="~/Content/images/@Model.PdfFileName" target="_blank">@Model.PdfFileName</a>
+
+        </dd>
+    </dl>
+</div>
+
+
+<p style="text-align:center">
+    <button>@Html.ActionLink("Edit", "Edit", new { id = Model.LessonID })</button><button>@Html.ActionLink("Back to List", "Index")</button>
 </p>
+
+
 @section scripts{
-    <script>
-        //apply the jQuery plugin
-        $(document).ready(function () {
-            $(".data-table").DataTable();
+    <script type="text/javascript">
+
+        $("body").on("click", "#PlayVideo", function () {
+            var url = $("#YoutubeUrl").val();
+            url = url.split('v=')[1];
+            $("#YouTubevideo")[0].src = "//www.youtube.com/embed/" +
+                url;
+            $("#YouTubevideo").show();
         });
     </script>
+    <script type="text/javascript"
+            src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3
+      /jquery.min.js"></script>
 }
+
+
+
+
+
+
+
+
+
+
+@*<div style="text-align:center">
+    <dl class="dl-horizontal">*@
+@*<dt>
+        @Html.DisplayNameFor(model => model.LessonTitle)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.LessonTitle)
+    </dd>*@
+
+@*<dt>
+        @Html.DisplayNameFor(model => model.Introduction)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.Introduction)
+    </dd>*@
+
+@*<dt>
+        @Html.DisplayNameFor(model => model.VideoURL)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.VideoURL)
+    </dd>*@
+
+@*<dt>
+        @Html.DisplayNameFor(model => model.PdfFileName)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.PdfFileName)
+        <a href="~/Content/images/@Model.PdfFileName" target="_blank">@Model.PdfFileName</a>
+
+    </dd>*@
+
+@*<dt>
+        @Html.DisplayNameFor(model => model.IsActive)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.IsActive)
+    </dd>*@
+
+@*<dt>
+        @Html.DisplayNameFor(model => model.Course.CourseName)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.Course.CourseName)
+    </dd>*@
+
+@*</dl>
+    </div>*@

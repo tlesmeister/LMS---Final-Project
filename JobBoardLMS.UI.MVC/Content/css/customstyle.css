@@ -11,3 +11,15 @@
 .sliderHeader {
     color: white;
 }
+
+.lessonVideos {
+    margin: auto;
+    width: 30%;
+    border: 9px solid green;
+    padding: 10px;
+    text-align:center;
+}
+
+.lessonPDF {
+
+}
