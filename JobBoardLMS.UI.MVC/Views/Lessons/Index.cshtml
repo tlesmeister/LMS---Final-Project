@@ -44,10 +44,6 @@
                 <th>
                     @Html.DisplayNameFor(model => model.Course.CourseName)
                 </th>
-                @if (User.IsInRole("Admin"))
-                {
-                    <th style="width:120px;"></th>
-                }
             </tr>
         </thead>
         <tbody>
@@ -72,21 +68,13 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.Course.CourseName)
                     </td>
-                    @if (User.IsInRole("Admin"))
-                    {
-                        <td>
-                            @Html.ActionLink("Edit", "Edit", new { id = item.LessonID }) |
-                            @Html.ActionLink("Details", "Details", new { id = item.LessonID }) |
-                            @Html.ActionLink("Delete", "Delete", new { id = item.LessonID })
-                        </td>
-                    }
-                    @if (User.IsInRole("Manager"))
-                    {
-                        <td>
-                            @Html.ActionLink("Edit", "Edit", new { id = item.LessonID }) |
-                            @Html.ActionLink("Details", "Details", new { id = item.LessonID })
-                        </td>
-                    }
+
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.LessonID }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.LessonID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.LessonID })
+                    </td>
+
                 </tr>
             }
         </tbody>
@@ -97,7 +85,7 @@
 
 @if (User.IsInRole("Employee"))
 {
-    <table class="table data-table table-striped" >
+    <table class="table data-table table-striped">
         <thead>
             <tr>
                 <th>
@@ -106,15 +94,15 @@
                 <th>
                     @Html.DisplayNameFor(model => model.Introduction)
                 </th>
+                @*<th>
+                        @Html.DisplayNameFor(model => model.VideoURL)
+                    </th>*@
                 <th>
-                    @Html.DisplayNameFor(model => model.VideoURL)
+                    @*@Html.DisplayNameFor(model => model.PdfFileName)*@
                 </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.PdfFileName)
-                </th>
-                <th>
+                @*<th>
                     @Html.DisplayNameFor(model => model.Course.CourseName)
-                </th>
+                </th>*@
 
             </tr>
         </thead>
@@ -128,18 +116,17 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.Introduction)
                     </td>
+                    @*<td>
+                            @Html.DisplayFor(modelItem => item.VideoURL)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PdfFileName)
+                        </td>*@
+                    @*<td>
+                            @Html.DisplayFor(modelItem => item.Course.CourseName)
+                        </td>*@
                     <td>
-                        @Html.DisplayFor(modelItem => item.VideoURL)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.PdfFileName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Course.CourseName)
-                    </td>
-                    <td>
-                        <input type="button" value="Enroll" onclick="location.href='@Url.Action("Index", "LessonViews")'" />
-                        @*<input type="button" value="Enroll" onclick="clickedEnroll()" />*@
+                        @Html.ActionLink("Details", "Details", new { id = item.LessonID })
                     </td>
                 </tr>
             }
@@ -196,6 +183,10 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.Course.CourseName)
                     </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.LessonID }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.LessonID })
+                    </td>
                 </tr>
             }
         </tbody>
@@ -208,10 +199,10 @@
         $(document).ready(function () {
             $(".data-table").DataTable();
         });
-        //$("#date-picker").datepicker({
-        //    changeMonth: true,
-        //    changeYear: true,
-        //    yearRange: "0:3000"
-        //});
+                //$("#date-picker").datepicker({
+                //    changeMonth: true,
+                //    changeYear: true,
+                //    yearRange: "0:3000"
+                //});
     </script>
 }
