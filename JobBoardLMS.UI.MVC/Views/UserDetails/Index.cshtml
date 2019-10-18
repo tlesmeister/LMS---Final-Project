@@ -15,7 +15,7 @@
     </div>
 </div>
 <p>
-    @Html.ActionLink("Create New", "Create")
+    <button>@Html.ActionLink("Create New User", "Create")</button>
 </p>
 <table class="table data-table table-striped">
     <thead>
@@ -42,9 +42,9 @@
                 @if (User.IsInRole("Admin"))
                 {
                     <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.UserID }) |
-                        @Html.ActionLink("Details", "Details", new { id = item.UserID }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.UserID })
+                        <button>@Html.ActionLink("Edit", "Edit", new { id = item.UserID })</button>
+                        <button>@Html.ActionLink("Details", "Details", new { id = item.UserID })</button>
+                        <button>@Html.ActionLink("Delete", "Delete", new { id = item.UserID })</button>
                     </td>
                 }
             </tr>

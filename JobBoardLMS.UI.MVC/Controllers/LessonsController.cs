@@ -13,7 +13,7 @@ namespace JobBoardLMS.UI.MVC.Controllers
     public class LessonsController : Controller
     {
         private LMSProjectEntities db = new LMSProjectEntities();
-        [Authorize(Roles ="Admin,Manager,Employee")]
+        [Authorize(Roles = "Admin,Manager,Employee")]
         // GET: Lessons
         public ActionResult Index()
         {
@@ -36,7 +36,7 @@ namespace JobBoardLMS.UI.MVC.Controllers
             }
             return View(lesson);
         }
-        [Authorize(Roles ="Admin, Manager")]
+        [Authorize(Roles = "Admin, Manager")]
         // GET: Lessons/Create
         public ActionResult Create()
         {
@@ -44,34 +44,34 @@ namespace JobBoardLMS.UI.MVC.Controllers
             return View();
         }
 
-        [Authorize(Roles ="Admin")]
+        [Authorize(Roles = "Admin")]
         // POST: Lessons/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "LessonID,LessonTitle,CourseID,Introduction,VideoURL,PdfFileName,IsActive")] Lesson lesson, HttpPostedFileBase fulImg) //step 1 in File upload
+        public ActionResult Create([Bind(Include = "LessonID,LessonTitle,CourseID,Introduction,VideoURL,PdfFileName,IsActive")] Lesson lesson, HttpPostedFileBase fulPdf) //step 1 in File upload
         {
             if (ModelState.IsValid)
             {
                 #region File Upload for Create
                 //use a default image if none is provided
                 string pdfName = "noName.pdf";
-                if (fulImg != null)//if it has a value, then they uploaded a file! So we process it
+                if (fulPdf != null)//if it has a value, then they uploaded a file! So we process it
                 {
                     //get image and assign it a variable
-                    pdfName = fulImg.FileName;
+                    pdfName = fulPdf.FileName;
                     //declare and assign ext value
                     string ext = pdfName.Substring(pdfName.LastIndexOf('.'));//gets extension including the "." (period)
                     //declare list of valid extensions
                     string[] goodExts = { ".pdf" };
                     //check the ext variable in lowercase vs that valid list and MAX file size 4 MB in ASPNET
-                    if (goodExts.Contains(ext.ToLower()) && (fulImg.ContentLength <= 4194304))
+                    if (goodExts.Contains(ext.ToLower()) && (fulPdf.ContentLength <= 4194304))
                     {
                         //if it is in the list rename using a GUID (uniqueness is vital to avoid overwrite)
                         pdfName = Guid.NewGuid() + ext;
                         //save to the webserver (Server.MapPath figures out path)
-                        fulImg.SaveAs(Server.MapPath("~/Content/images/" + pdfName));
+                        fulPdf.SaveAs(Server.MapPath("~/Content/images/" + pdfName));
                     }
                     else
                     {
@@ -114,27 +114,27 @@ namespace JobBoardLMS.UI.MVC.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "LessonID,LessonTitle,CourseID,Introduction,VideoURL,PdfFileName,IsActive")] Lesson lesson, HttpPostedFileBase fulImage) //Step 1 adding HttpPostedFileBase
+        public ActionResult Edit([Bind(Include = "LessonID,LessonTitle,CourseID,Introduction,VideoURL,PdfFileName,IsActive")] Lesson lesson, HttpPostedFileBase fulPdf) //Step 1 adding HttpPostedFileBase fulPdf
         {
             if (ModelState.IsValid)
             {
                 #region File Upload for EDIT
-                if (fulImage != null)//if it has a value, then they uploaded a file! So we process it
+                if (fulPdf != null)//if it has a value, then they uploaded a file! So we process it
                 {
                     //get image and assign to variable
-                    string pdfName = fulImage.FileName;
+                    string pdfName = fulPdf.FileName;
 
                     //declare and assign ext value
                     string ext = pdfName.Substring(pdfName.LastIndexOf('.'));//gets extension including the "." (period)
                     //declare list of valid extensions
                     string[] goodExts = { ".pdf" };
                     //check the ext variable in lowercase vs that valid list and MAX file size 4 MB in ASPNET
-                    if (goodExts.Contains(ext.ToLower()) && (fulImage.ContentLength <= 4194304))
+                    if (goodExts.Contains(ext.ToLower()) && (fulPdf.ContentLength <= 4194304))
                     {
                         //if it is in the list rename using a GUID (uniqueness is vital to avoid overwrite)
                         pdfName = Guid.NewGuid() + ext;
                         //save to the webserver (Server.MapPath figures out path)
-                        fulImage.SaveAs(Server.MapPath("~/Content/images/" + pdfName));
+                        fulPdf.SaveAs(Server.MapPath("~/Content/images/" + pdfName));
 
                         //HOUSEKEEPING for the edit: Delete old file on record if not the default
                         if (lesson.PdfFileName != null && lesson.PdfFileName != "noImage.pdf")
@@ -158,13 +158,13 @@ namespace JobBoardLMS.UI.MVC.Controllers
 
                 #endregion
                 db.Entry(lesson).State = EntityState.Modified;
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
-        ViewBag.CourseID = new SelectList(db.Courses1, "CourseID", "CourseName", lesson.CourseID);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            ViewBag.CourseID = new SelectList(db.Courses1, "CourseID", "CourseName", lesson.CourseID);
             return View(lesson);
         }
-        [Authorize(Roles ="Admin")]
+        [Authorize(Roles = "Admin")]
         // GET: Lessons/Delete/5
         public ActionResult Delete(int? id)
         {
@@ -179,7 +179,7 @@ namespace JobBoardLMS.UI.MVC.Controllers
             }
             return View(lesson);
         }
-        [Authorize(Roles ="Admin")]
+        [Authorize(Roles = "Admin")]
         // POST: Lessons/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]

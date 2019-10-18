@@ -15,7 +15,7 @@
     </div>
 </div>
 <p>
-    @Html.ActionLink("Create New", "Create")
+    <button>@Html.ActionLink("Create New Lesson", "Create")</button>
 </p>
 <table class="table data-table table-striped">
     <thead>
@@ -48,22 +48,22 @@
                 @if (User.IsInRole("Admin"))
                 {
                     <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.LessonViewID }) |
-                        @Html.ActionLink("Details", "Details", new { id = item.LessonViewID }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.LessonViewID })
+                        <button>@Html.ActionLink("Edit", "Edit", new { id = item.LessonViewID })</button>
+                        <button>@Html.ActionLink("Details", "Details", new { id = item.LessonViewID })</button>
+                        <button>@Html.ActionLink("Delete", "Delete", new { id = item.LessonViewID })</button>
                     </td>
                 }
                 @if (User.IsInRole("Manager"))
                 {
                     <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.LessonViewID }) |
-                        @Html.ActionLink("Details", "Details", new { id = item.LessonViewID })
+                        <button> @Html.ActionLink("Edit", "Edit", new { id = item.LessonViewID })</button>
+                        <button>@Html.ActionLink("Details", "Details", new { id = item.LessonViewID })</button>
                     </td>
                 }
                 @if (User.IsInRole("Employee"))
                 {
                     <td>
-                        @Html.ActionLink("Details", "Details", new { id = item.LessonViewID })
+                        <button>@Html.ActionLink("Details", "Details", new { id = item.LessonViewID })</button>
                     </td>
                 }
             </tr>

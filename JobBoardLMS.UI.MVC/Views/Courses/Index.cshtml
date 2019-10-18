@@ -17,7 +17,7 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    <button>@Html.ActionLink("Create New Course", "Create")</button>
 </p>
 <table class="table data-table table-striped">
     <thead>
@@ -50,16 +50,16 @@
                 @if (User.IsInRole("Admin"))
                 {
                     <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.CourseID }) |
-                        @Html.ActionLink("Details", "Details", new { id = item.CourseID }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.CourseID })
+                        <button>@Html.ActionLink("Edit", "Edit", new { id = item.CourseID })</button>
+                        <button>@Html.ActionLink("Details", "Details", new { id = item.CourseID })</button>
+                        <button>@Html.ActionLink("Delete", "Delete", new { id = item.CourseID })</button>
                     </td>
                 }
                 @if (User.IsInRole("Manager"))
                 {
                     <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.CourseID }) |
-                        @Html.ActionLink("Details", "Details", new { id = item.CourseID })
+                        <button>@Html.ActionLink("Edit", "Edit", new { id = item.CourseID })</button>
+                        <button>@Html.ActionLink("Details", "Details", new { id = item.CourseID })</button>
                     </td>
                 }
             </tr>

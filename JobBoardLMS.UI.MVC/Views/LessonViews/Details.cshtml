@@ -14,7 +14,7 @@
         </div>
     </div>
 </div>
-<div>
+<div style="text-align:center">
     <h4>LessonView</h4>
     <hr />
     <dl class="dl-horizontal">
@@ -44,7 +44,7 @@
 
     </dl>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.LessonViewID }) |
-    @Html.ActionLink("Back to List", "Index")
+<p style="text-align:center">
+    <button>@Html.ActionLink("Edit", "Edit", new { id = Model.LessonViewID })</button>
+    <button>@Html.ActionLink("Back to Lesson Views", "Index")</button>
 </p>
