@@ -154,14 +154,18 @@ namespace JobBoardLMS.UI.MVC.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+
+                    UserManager.AddToRole(user.Id, "Employee");
+
                     #region Assign UserDetails During Registration
-                    UserDetail newUserDeets = new UserDetail();
-                    newUserDeets.UserID = user.Id;
-                    newUserDeets.FirstName = model.FirstName;
-                    newUserDeets.LastName = model.LastName;
+                    UserDetail nUser = new UserDetail();
+                    nUser.UserID = user.Id;
+                    nUser.FirstName = model.FirstName;
+                    nUser.LastName = model.LastName;
+
 
                     LMSProjectEntities db = new LMSProjectEntities();
-                    db.UserDetails.Add(newUserDeets);
+                    db.UserDetails.Add(nUser);
                     db.SaveChanges();
                     #endregion
                     #region Removed Email Confirmed Demo

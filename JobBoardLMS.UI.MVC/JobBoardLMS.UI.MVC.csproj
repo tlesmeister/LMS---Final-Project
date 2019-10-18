@@ -285,7 +285,6 @@
     <Content Include="Content\images\javascript.jpg" />
     <Content Include="Content\images\kanban.jpg" />
     <Content Include="Content\images\logo.jpg" />
-    <Content Include="Content\images\logo.png" />
     <Content Include="Content\images\mvc.jpg" />
     <Content Include="Content\images\mylogo.jpg" />
     <Content Include="Content\images\person_1.jpg" />

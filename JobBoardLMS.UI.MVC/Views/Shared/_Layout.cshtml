@@ -62,7 +62,7 @@
                 <div class="d-flex align-items-center">
                     <div class="site-logo">
                         <a href="#" class="d-block">
-                            <img src="~/Content/images/mylogo.jpg" alt="Image" class="img-fluid">
+                            <img src="~/Content/images/logo.jpg" alt="Image" class="img-fluid">
                         </a>
                     </div>
                     <div class="mr-auto">
@@ -101,12 +101,12 @@
                                 @if (Request.IsAuthenticated && User.IsInRole("Manager"))
                                 {
                                     {
-                                        <li class="has-children ">
-                                            @Html.ActionLink("Courses", "Index", "Courses")
-                                            <ul class="dropdown">
-                                                @Html.ActionLink("Course Completion", "Index", "CourseCompletions")
-                                            </ul>
-                                        </li>
+                                    <li class="has-children ">
+                                        @Html.ActionLink("Courses", "Index", "Courses")
+                                        <ul class="dropdown">
+                                            @Html.ActionLink("Course Completion", "Index", "CourseCompletions")
+                                        </ul>
+                                    </li>
                                         <li class="has-children ">
                                             @Html.ActionLink("Lessons", "Index", "Lessons")
                                             <ul class="dropdown">
@@ -186,12 +186,13 @@
             <div class="row align-items-center">
                 <div class="col-lg-7">
                     <h2>Contact Us!</h2>
-                    <p>Helping to better yourself and make a great future for yourself!</p>
+                    <p>Helping to better yourself for the future!</p>
                 </div>
                 <div class="col-lg-5">
                     <form action="" class="d-flex">
                         <input type="text" class="rounded form-control mr-2 py-3" placeholder="Enter your email">
-                        <button class="btn btn-primary rounded py-3 px-4" type="submit">Send</button>
+                        @*<button class="btn btn-primary rounded py-3 px-4" type="submit">Send</button>*@
+                        <button><a href="@Url.Action("Contact","Home")">Send</a></button>
                         @* When clicking send make it navigate to the contact page. *@
                     </form>
                 </div>
@@ -203,9 +204,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-3">
-                    <p class="mb-4"><img src="../../Content/images/mylogo.jpg" alt="Image" class="img-fluid"></p>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae nemo minima qui dolor, iusto iure.</p>
-                    <p><a href="#">Learn More</a></p>
+                    <p class="mb-4"><img src="../../Content/images/logo.jpg" alt="Image" class="img-fluid"></p>
+                    <p>Enhance your brain, by learning something new.</p>
                 </div>
                 <div class="col-lg-3">
                     <h3 class="footer-heading"><span>Our Campus</span></h3>

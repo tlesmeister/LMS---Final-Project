@@ -2,9 +2,9 @@
     border: 2px solid black;
     padding: 25px;
     background-repeat: no-repeat;
-    background-size: 300px 100px;
+    background-size: 500px 100px;
     /*width: 400px;*/
-    height: 200px;
+    height: 400px;
     background: url(../../Content/images/backgroundimage2.jpg);
 }
 
