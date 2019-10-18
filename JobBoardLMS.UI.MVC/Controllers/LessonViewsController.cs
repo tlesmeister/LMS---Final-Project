@@ -34,6 +34,7 @@ namespace JobBoardLMS.UI.MVC.Controllers
                 return HttpNotFound();
             }
             return View(lessonView);
+
         }
         [Authorize(Roles = "Admin,Manager")]
         // GET: LessonViews/Create

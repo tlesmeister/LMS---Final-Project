@@ -17,7 +17,7 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
+<table class="table data-table table-striped">
     <thead>
         <tr>
             <th>
@@ -35,39 +35,47 @@
     <tbody>
         @foreach (var item in Model)
         {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.UserID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DateViewed)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Lessons.LessonTitle)
-            </td>
-            @if (User.IsInRole("Admin"))
-            {
+            <tr>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.LessonViewID }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.LessonViewID }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.LessonViewID })
+                    @Html.DisplayFor(modelItem => item.UserID)
                 </td>
-            }
-            @if (User.IsInRole("Manager"))
-            {
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.LessonViewID }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.LessonViewID })
+                    @Html.DisplayFor(modelItem => item.DateViewed)
                 </td>
-            }
-            @if (User.IsInRole("Employee"))
-            {
                 <td>
-                    @Html.ActionLink("Details", "Details", new { id = item.LessonViewID })
+                    @Html.DisplayFor(modelItem => item.Lessons.LessonTitle)
                 </td>
-            }
-        </tr>
+                @if (User.IsInRole("Admin"))
+                {
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.LessonViewID }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.LessonViewID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.LessonViewID })
+                    </td>
+                }
+                @if (User.IsInRole("Manager"))
+                {
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.LessonViewID }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.LessonViewID })
+                    </td>
+                }
+                @if (User.IsInRole("Employee"))
+                {
+                    <td>
+                        @Html.ActionLink("Details", "Details", new { id = item.LessonViewID })
+                    </td>
+                }
+            </tr>
         }
     </tbody>
 
 </table>
+@section scripts{
+    <script>
+        //apply the jQuery plugin
+        $(document).ready(function () {
+            $(".data-table").DataTable();
+        });
+    </script>
+}

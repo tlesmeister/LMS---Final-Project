@@ -17,7 +17,7 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
+<table class="table data-table table-striped">
     <thead>
         <tr>
             <th>
@@ -36,37 +36,45 @@
     <tbody>
         @foreach (var item in Model)
         {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.UserID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DateCompleted)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Course.CourseName)
-            </td>
-            @*<td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.CourseCompletionID }) |
-            @Html.ActionLink("Details", "Details", new { id = item.CourseCompletionID }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.CourseCompletionID })
-        </td>*@
-            @if (User.IsInRole("Admin"))
-            {
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.CourseCompletionID }) |
-                @Html.ActionLink("Details", "Details", new { id = item.CourseCompletionID }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.CourseCompletionID })
-            </td>
-            }
-            @if (User.IsInRole("Manager"))
-            {
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.CourseCompletionID }) |
-                @Html.ActionLink("Details", "Details", new { id = item.CourseCompletionID }) 
-            </td>
-            }
-        </tr>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateCompleted)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Course.CourseName)
+                </td>
+                @*<td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.CourseCompletionID }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.CourseCompletionID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.CourseCompletionID })
+                    </td>*@
+                @if (User.IsInRole("Admin"))
+                {
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.CourseCompletionID }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.CourseCompletionID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.CourseCompletionID })
+                    </td>
+                }
+                @if (User.IsInRole("Manager"))
+                {
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.CourseCompletionID }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.CourseCompletionID })
+                    </td>
+                }
+            </tr>
         }
     </tbody>
 </table>
+@section scripts{
+    <script>
+        //apply the jQuery plugin
+        $(document).ready(function () {
+            $(".data-table").DataTable();
+        });
+    </script>
+}

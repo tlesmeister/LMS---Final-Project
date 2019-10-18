@@ -17,7 +17,7 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
+<table class="table data-table table-striped">
     <thead>
         <tr>
             <th>
@@ -32,23 +32,31 @@
     <tbody>
         @foreach (var item in Model)
         {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.FirstName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LastName)
-            </td>
-            @if (User.IsInRole("Admin"))
-            {
+            <tr>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.UserID }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.UserID }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.UserID })
+                    @Html.DisplayFor(modelItem => item.FirstName)
                 </td>
-            }
-        </tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+                @if (User.IsInRole("Admin"))
+                {
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.UserID }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.UserID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.UserID })
+                    </td>
+                }
+            </tr>
         }
     </tbody>
 
 </table>
+@section scripts{
+    <script>
+        //apply the jQuery plugin
+        $(document).ready(function () {
+            $(".data-table").DataTable();
+        });
+    </script>
+}
