@@ -10,8 +10,17 @@ using JobBoardLMS.DATA.EF;
 
 namespace JobBoardLMS.UI.MVC.Controllers
 {
+    
     public class CourseCompletionsController : Controller
     {
+        public ActionResult courseComp()
+        {
+            #region Course completed after 6 hours of Lesson training has been completed
+
+            #endregion
+            return View();
+        }
+
         private LMSProjectEntities db = new LMSProjectEntities();
         [Authorize(Roles = "Admin,Manager,Employee")]
         // GET: CourseCompletions

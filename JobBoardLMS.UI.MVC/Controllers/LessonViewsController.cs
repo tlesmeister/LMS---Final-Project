@@ -12,8 +12,16 @@ namespace JobBoardLMS.UI.MVC.Controllers
 {
     public class LessonViewsController : Controller
     {
+        public ActionResult compLessons()
+        {
+            #region Lesson Has been Viewed and completed
+
+            #endregion
+            return View();
+        }
+
         private LMSProjectEntities db = new LMSProjectEntities();
-        [Authorize(Roles ="Admin,Manager,Employee")]
+        [Authorize(Roles = "Admin,Manager,Employee")]
         // GET: LessonViews
         public ActionResult Index()
         {
