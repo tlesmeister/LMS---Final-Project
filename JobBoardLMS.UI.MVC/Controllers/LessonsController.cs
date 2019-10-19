@@ -7,11 +7,18 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using JobBoardLMS.DATA.EF;
+using Microsoft.AspNet.Identity;
 
 namespace JobBoardLMS.UI.MVC.Controllers
 {
+    
     public class LessonsController : Controller
     {
+        //Add progress bar https://www.w3schools.com/howto/howto_js_progressbar.asp
+        public ActionResult lessonProgress()
+        {
+            return View();
+        }
         private LMSProjectEntities db = new LMSProjectEntities();
         [Authorize(Roles = "Admin,Manager,Employee")]
         // GET: Lessons
@@ -34,6 +41,44 @@ namespace JobBoardLMS.UI.MVC.Controllers
             {
                 return HttpNotFound();
             }
+            #region Lesson Viewed
+            int lessonID = id.Value;
+            DateTime viewedDate = DateTime.Now;
+            string userID = User.Identity.GetUserId();
+            int lessID = lesson.LessonID;
+            if (db.LessonViews.Any(l => l.LessonID == lessID && l.UserID == userID))
+            {
+                LessonView lvCred = new LessonView();
+                lvCred.LessonID = lessID;
+                lvCred.DateViewed = viewedDate;
+                lvCred.UserID = userID;
+                db.LessonViews.Add(lvCred);
+                db.SaveChanges();
+            }
+
+            Courses tCourse = lesson.Course;
+            int tcID = lesson.CourseID;
+            int thisCount = tCourse.Lessons.Count();
+            tCourse.Lessons.Count();
+
+            int thisCourseCount = (from x in db.LessonViews
+                                   where x.UserID == userID &&
+                                   x.Lessons.CourseID == tcID
+                                   select x).Count();
+
+            bool userCompletedAlready = db.CourseCompletions.Where(uc => uc.UserID == userID).Where(uc => uc.CourseID == tcID).Count() >0;
+
+            if (!userCompletedAlready && thisCourseCount >= thisCount)
+            {
+                CourseCompletion cc = new CourseCompletion();
+                cc.UserID = userID;
+                cc.CourseID = tcID;
+                cc.DateCompleted = DateTime.Now;
+                db.CourseCompletions.Add(cc);
+                db.SaveChanges();
+                return View(lesson);
+            }
+            #endregion
             return View(lesson);
         }
         [Authorize(Roles = "Admin, Manager")]
@@ -71,7 +116,7 @@ namespace JobBoardLMS.UI.MVC.Controllers
                         //if it is in the list rename using a GUID (uniqueness is vital to avoid overwrite)
                         pdfName = Guid.NewGuid() + ext;
                         //save to the webserver (Server.MapPath figures out path)
-                        fulPdf.SaveAs(Server.MapPath("~/Content/images/" + pdfName));
+                        fulPdf.SaveAs(Server.MapPath("~/Content/pdfs/" + pdfName));
                     }
                     else
                     {
@@ -134,13 +179,13 @@ namespace JobBoardLMS.UI.MVC.Controllers
                         //if it is in the list rename using a GUID (uniqueness is vital to avoid overwrite)
                         pdfName = Guid.NewGuid() + ext;
                         //save to the webserver (Server.MapPath figures out path)
-                        fulPdf.SaveAs(Server.MapPath("~/Content/images/" + pdfName));
+                        fulPdf.SaveAs(Server.MapPath("~/Content/pdfs/" + pdfName));
 
                         //HOUSEKEEPING for the edit: Delete old file on record if not the default
                         if (lesson.PdfFileName != null && lesson.PdfFileName != "noImage.pdf")
                         {
                             //remove original file 
-                            System.IO.File.Delete(Server.MapPath("~/Content/images/" + lesson.PdfFileName));
+                            System.IO.File.Delete(Server.MapPath("~/Content/pdfs/" + lesson.PdfFileName));
                         }
 
                         //only if file upload OK, file upload, change the new db record's file field to reflect the name

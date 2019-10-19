@@ -15,9 +15,11 @@ namespace JobBoardLMS.UI.MVC.Controllers
         public ActionResult compLessons()
         {
             #region Lesson Has been Viewed and completed
-
+            var Id = Session["Id"];
+            ViewBag.enrolledCourseIds = db.LessonViews.Where(a => a.UserID == (string)Id).Select(b => b.LessonID);
+            ViewBag.completedCourses = db.CourseCompletions;
             #endregion
-            return View();
+            return View(db.Lessons.ToList());
         }
 
         private LMSProjectEntities db = new LMSProjectEntities();

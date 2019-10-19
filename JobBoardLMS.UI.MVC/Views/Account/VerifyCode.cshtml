@@ -2,9 +2,11 @@
 @{
     ViewBag.Title = "Enter Verification Code";
 }
-
-<h2>@ViewBag.Title.</h2>
-
+<div class="banner-w3pvt-info second">
+    <div class="overlay-w3ls second">
+        <p class="col-lg-12 headerText" style="text-align:center">@ViewBag.Title</p>
+    </div>
+</div>
 @using (Html.BeginForm("VerifyCode", "Account", new { ReturnUrl = Model.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" })) {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary("", new { @class = "text-danger" })
