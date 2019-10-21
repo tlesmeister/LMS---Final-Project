@@ -8,12 +8,107 @@
         <p class="col-lg-12 headerText" style="text-align:center">@ViewBag.Title</p>
     </div>
 </div>
+<section class="middile-sec py-5" id="tabs">
+    <div class="container py-md-5">
+        <div class="middile-inner-con">
+            <div class="tab-main mx-auto">
+
+                <input id="tab1" type="radio" name="tabs" checked>
+                <label for="tab1">@ViewBag.Title</label>
+
+                <input id="tab2" type="radio" name="tabs">
+                <label for="tab2">@ViewBag.Title | Helpful Links</label>
+
+                <section id="content1">
+                    <div class="row">
+
+                        <div class="p-3">
+                            <div>
+                                <dl class="dl-horizontal">
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.Course.CourseName)
+                                    </dt>
+
+                                    <dd>
+                                        @Html.DisplayFor(model => model.Course.CourseName)
+                                    </dd>
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.LessonTitle)
+                                    </dt>
+
+                                    <dd>
+                                        @Html.DisplayFor(model => model.LessonTitle)
+                                    </dd>
+                                </dl>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div>
+                        <dl class="dl-horizontal">
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Introduction)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.Introduction)
+                            </dd>
+                        </dl>
+                    </div>
+
+                    <div>
+                        <dl class="dl-horizontal">
+                            <dt>
+                                @Html.DisplayNameFor(model => model.PdfFileName)
+                            </dt>
+
+                            <dd>
+                                @*@Html.DisplayFor(model => model.PdfFileName)*@
+                                <a id="#list" href="~/Content/pdfs/@Model.PdfFileName" target="_blank">@Model.PdfFileName</a>
+
+                            </dd>
+                        </dl>
+                    </div>
+                    <div >
+                        <iframe class="lessonVideos" src="https://www.youtube.com/embed/@Model.VideoURL" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </section>
+
+                <section id="content2">
+                    <div class="row">
+                        <div class="col-lg-6  p-3">
+                            <p>Helpful Outside Links (If you would like to learn outside of LMS)</p>
+                            <ul>
+                                <li>https://www.w3schools.com/</li>
+                                <li>http://aspalliance.com/</li>
+                                <li>http://techfunda.com/</li>
+                                <li>https://www.contentful.com/developers/docs/</li>
+                                <li>https://tutorialslink.com/Home/</li>
+                                <li>https://docs.microsoft.com/en-us/</li>
+                                <li>https://www.javatpoint.com/</li>
+                                <li>https://www.tutorialsteacher.com/</li>
+                                <li>https://www.c-sharpcorner.com/</li>
+                                <li>http://www.java2s.com</li>
+                                <li>https://meeraacademy.com/</li>
+                                <li>https://www.tutlane.com/tutorials</li>
+                                <li>https://channel9.msdn.com/</li>
+                                <li>https://www.sololearn.com/</li>
+                                <li>https://beginnersbook.com/</li>
+                                <li>https://www.codecademy.com</li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-6">
+                            <img src="~/Content/images/img2.jpg" class="img-fluid" alt="mobile-image">
+                        </div>
+                    </div>
+                </section>
+
+               
+            </div>
+        </div>
+    </div>
+</section>
 @*<div style="text-align:center">
-        <p>
-            Please watch the video or read the PDF to mark this course as complete.
-        </p>
-    </div>*@
-<div style="text-align:center">
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.Course.CourseName)
@@ -31,25 +126,15 @@
         </dd>
     </dl>
 </div>
-@*<div style="text-align:center">
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.LessonTitle)
-            </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.LessonTitle)
-            </dd>
-        </dl>
-    </div>*@
 <div class="col-md-12 lessonVideos">
     <iframe id="#list" src="https://www.youtube.com/embed/@Model.VideoURL" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-</div>
+</div>*@
 
 
 
-<div style="text-align:center">
+@*<div style="text-align:center">
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.Introduction)
@@ -68,12 +153,12 @@
         </dt>
 
         <dd>
-            @*@Html.DisplayFor(model => model.PdfFileName)*@
+           @Html.DisplayFor(model => model.PdfFileName)
             <a id="#list" href="~/Content/pdfs/@Model.PdfFileName" target="_blank">@Model.PdfFileName</a>
 
         </dd>
     </dl>
-</div>
+</div>*@
 
 
 <p style="text-align:center">

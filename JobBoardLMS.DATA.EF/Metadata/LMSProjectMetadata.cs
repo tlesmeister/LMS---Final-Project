@@ -19,7 +19,7 @@ namespace JobBoardLMS.DATA.EF//.Metadata
         //Foreign Key
         public int CourseID { get; set; }
         [Display(Name = "Complete Date")]
-        [DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true, NullDisplayText = "[-N/A-]")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true, NullDisplayText = "[-N/A-]")]
         public System.DateTime DateCompleted { get; set; }
     }
     [MetadataType(typeof(CourseCompletionsClassMetadata))]
@@ -82,7 +82,7 @@ namespace JobBoardLMS.DATA.EF//.Metadata
         //Foreign Key
         public int LessonID { get; set; }
         [Display(Name = "Start Date")]
-        [DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true, NullDisplayText = "[-N/A-]")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true, NullDisplayText = "[-N/A-]")]
         public System.DateTime DateViewed { get; set; }
     }
     [MetadataType(typeof(LessonViewsClassMetadata))]
