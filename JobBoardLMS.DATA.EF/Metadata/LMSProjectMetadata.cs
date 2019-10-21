@@ -54,6 +54,7 @@ namespace JobBoardLMS.DATA.EF//.Metadata
         [Required(ErrorMessage = "*")]
         [StringLength(20, ErrorMessage = "* Title must be 20 characters or less.")]
         [DisplayFormat(NullDisplayText = "[-N/A-]")]
+        [Display(Name = "Lesson Title")]
         public string LessonTitle { get; set; }
         //Foreign Key
         public int CourseID { get; set; }
