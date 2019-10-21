@@ -13,12 +13,13 @@ namespace JobBoardLMS.UI.MVC.Controllers
     public class CoursesController : Controller
     {
         private LMSProjectEntities db = new LMSProjectEntities();
-        [Authorize (Roles ="Admin,Manager")]
+        
         // GET: Courses
         public ActionResult Index()
         {
             return View(db.Courses1.ToList());
         }
+
         [Authorize(Roles = "Admin,Manager")]
         // GET: Courses/Details/5
         public ActionResult Details(int? id)

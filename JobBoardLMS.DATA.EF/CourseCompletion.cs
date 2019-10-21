@@ -20,5 +20,6 @@ namespace JobBoardLMS.DATA.EF
         public System.DateTime DateCompleted { get; set; }
     
         public virtual Courses Course { get; set; }
+        public virtual AspNetUser AspNetUser { get; set; }
     }
 }

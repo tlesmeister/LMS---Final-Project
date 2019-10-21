@@ -12,14 +12,13 @@ namespace JobBoardLMS.DATA.EF
     using System;
     using System.Collections.Generic;
     
-    public partial class LessonView
+    public partial class AspNetUserClaim
     {
-        public int LessonViewID { get; set; }
-        public string UserID { get; set; }
-        public int LessonID { get; set; }
-        public System.DateTime DateViewed { get; set; }
+        public int Id { get; set; }
+        public string UserId { get; set; }
+        public string ClaimType { get; set; }
+        public string ClaimValue { get; set; }
     
-        public virtual Lesson Lessons { get; set; }
         public virtual AspNetUser AspNetUser { get; set; }
     }
 }

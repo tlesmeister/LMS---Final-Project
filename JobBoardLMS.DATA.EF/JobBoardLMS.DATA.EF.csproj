@@ -50,13 +50,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AspNetRole.cs">
+      <DependentUpon>LMSProjectModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="AspNetUser.cs">
+      <DependentUpon>LMSProjectModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspNetUserClaim.cs">
+      <DependentUpon>LMSProjectModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspNetUserLogin.cs">
       <DependentUpon>LMSProjectModel.tt</DependentUpon>
     </Compile>
     <Compile Include="CourseCompletion.cs">
       <DependentUpon>LMSProjectModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Courses.cs">
+      <DependentUpon>LMSProjectModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="C__MigrationHistory.cs">
       <DependentUpon>LMSProjectModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Lesson.cs">
@@ -82,6 +94,9 @@
     </Compile>
     <Compile Include="Metadata\LMSProjectMetadata.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="sysdiagram.cs">
+      <DependentUpon>LMSProjectModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="UserDetail.cs">
       <DependentUpon>LMSProjectModel.tt</DependentUpon>
     </Compile>

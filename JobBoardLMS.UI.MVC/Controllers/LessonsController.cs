@@ -15,10 +15,7 @@ namespace JobBoardLMS.UI.MVC.Controllers
     public class LessonsController : Controller
     {
         //Add progress bar https://www.w3schools.com/howto/howto_js_progressbar.asp
-        public ActionResult lessonProgress()
-        {
-            return View();
-        }
+        
         private LMSProjectEntities db = new LMSProjectEntities();
         [Authorize(Roles = "Admin,Manager,Employee")]
         // GET: Lessons
@@ -41,12 +38,16 @@ namespace JobBoardLMS.UI.MVC.Controllers
             {
                 return HttpNotFound();
             }
+            
             #region Lesson Viewed
             int lessonID = id.Value;
             DateTime viewedDate = DateTime.Now;
             string userID = User.Identity.GetUserId();
             int lessID = lesson.LessonID;
-            if (db.LessonViews.Any(l => l.LessonID == lessID && l.UserID == userID))
+
+            var currentLessons = db.LessonViews.Where(lv => lv.LessonID == id && lv.UserID == userID);
+
+            if (currentLessons.Count() == 0)
             {
                 LessonView lvCred = new LessonView();
                 lvCred.LessonID = lessID;
@@ -66,7 +67,7 @@ namespace JobBoardLMS.UI.MVC.Controllers
                                    x.Lessons.CourseID == tcID
                                    select x).Count();
 
-            bool userCompletedAlready = db.CourseCompletions.Where(uc => uc.UserID == userID).Where(uc => uc.CourseID == tcID).Count() >0;
+            bool userCompletedAlready = db.CourseCompletions.Where(uc => uc.UserID == userID).Where(uc => uc.CourseID == tcID).Count() > 0;
 
             if (!userCompletedAlready && thisCourseCount >= thisCount)
             {
@@ -78,6 +79,7 @@ namespace JobBoardLMS.UI.MVC.Controllers
                 db.SaveChanges();
                 return View(lesson);
             }
+
             #endregion
             return View(lesson);
         }

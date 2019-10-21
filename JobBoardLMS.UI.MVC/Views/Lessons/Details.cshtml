@@ -43,8 +43,8 @@
         </dl>
     </div>*@
 <div class="col-md-12 lessonVideos">
-    <iframe src="https://www.youtube.com/embed/@Model.VideoURL" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    @*<iframe width="560" height="315" src="https://www.youtube.com/embed/UB1O30fR-EE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>*@
+    <iframe id="#list" src="https://www.youtube.com/embed/@Model.VideoURL" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 </div>
 
 
@@ -69,7 +69,7 @@
 
         <dd>
             @*@Html.DisplayFor(model => model.PdfFileName)*@
-            <a href="~/Content/pdfs/@Model.PdfFileName" target="_blank">@Model.PdfFileName</a>
+            <a id="#list" href="~/Content/pdfs/@Model.PdfFileName" target="_blank">@Model.PdfFileName</a>
 
         </dd>
     </dl>
@@ -82,13 +82,28 @@
 
 
 @section scripts{
-    <script>
-        $("#date-picker").datepicker({
-            changeMonth: true,
-            changeYear: true,
-            yearRange: "0:3000"
-        });
-    </script>
+    @*<script>
+        //**********************Mark Lesson as Complete***************************//
+        $('#list').on('click', '.complete-button', function (event) {
+            var item = $(event.@Model.LessonID).parent()
+            var isItemCompleted = item.hasClass('completed')
+            var itemId = item.attr('data-id')
+
+            var updateRequest = $.ajax({
+                type: 'PUT',
+                url: "@Url.Action("Index","CourseCompletions")" + @Model.CourseID,
+                data: { completed: !isItemCompleted }
+            })
+
+            updateRequest.done(function (itemData) {
+                if (itemData.completed) {
+                    item.addClass('completed')
+                } else {
+                    item.removeClass('completed')
+                }
+            })
+        })
+    </script>*@
 }
 
 

@@ -12,14 +12,11 @@ namespace JobBoardLMS.DATA.EF
     using System;
     using System.Collections.Generic;
     
-    public partial class LessonView
+    public partial class C__MigrationHistory
     {
-        public int LessonViewID { get; set; }
-        public string UserID { get; set; }
-        public int LessonID { get; set; }
-        public System.DateTime DateViewed { get; set; }
-    
-        public virtual Lesson Lessons { get; set; }
-        public virtual AspNetUser AspNetUser { get; set; }
+        public string MigrationId { get; set; }
+        public string ContextKey { get; set; }
+        public byte[] Model { get; set; }
+        public string ProductVersion { get; set; }
     }
 }

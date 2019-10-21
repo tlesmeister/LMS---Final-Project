@@ -45,132 +45,81 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <div class="main-content" id="home">
         <!-- header -->
         <header class="header">
-            <div class="container">
+            <div class="container navbar">
                 <!-- nav -->
-                <nav class="py-2">
-                    <div id="logo">
+                <nav role="navigation">
+                    @*<div id="logo">
                         <h1>
                             <a class="navbar-brand" href="@Url.Action("Index", "Home")">No<span>rm</span> </a>
                         </h1>
-                    </div>
-
-                    <label for="drop" class="toggle">Menu</label>
-                    <input type="checkbox" id="drop" />
+                    </div>*@
                     <ul class="menu">
-                        <li ><a href="@Url.Action("Index", "Home")">Home</a></li>
-                        <li @*class="active"*@><a href="@Url.Action("About", "Home")">About</a></li>
+                        <li><a href="@Url.Action("Index", "Home")">Home</a></li>
+                        <li><a href="@Url.Action("About", "Home")">About</a></li>
                         @if (Request.IsAuthenticated && User.IsInRole("Admin"))
                         {
                             <li>
+                                <a href="#">Courses</a>
+                                <ul class="dropdown">
+                                    <li>@Html.ActionLink("Courses", "Index", "Courses")</li>
+                                    <li>@Html.ActionLink("Course Completion", "Index", "CourseCompletions")</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">Lessons</a>
+                                <ul class="dropdown">
+                                    <li>@Html.ActionLink("Lessons", "Index", "Lessons")</li>
+                                    <li>@Html.ActionLink("Lesson Views", "Index", "LessonViews")</li>
+                                </ul>
+                            </li>
 
-                                <!-- First Tier Drop Down -->
-                               <label for="drop-2" class="toggle">Layouts <span class="fa fa-angle-down" aria-hidden="true"></span> </label>
-                                <a href="#">Lessons <span class="fa fa-angle-down" aria-hidden="true"></span></a>
-                                <input type="checkbox" id="drop-2" />
-                                <ul>
-                                    <li>
-                                        @Html.ActionLink("Lessons", "Index", "Lessons")
-                                    </li>
-                                    <li>
-                                        @Html.ActionLink("Lesson Views", "Index", "LessonViews")
-                                    </li>
-                                </ul>
-                            </li>
                             <li>
-                                <label for="drop-2" class="toggle">Layouts <span class="fa fa-angle-down" aria-hidden="true"></span> </label>
-                                <a href="#">Courses <span class="fa fa-angle-down" aria-hidden="true"></span></a>
-                                <input type="checkbox" id="drop-2" />
-                                <ul>
-                                    <li>
-                                        @Html.ActionLink("Courses", "Index", "Courses")
-                                    </li>
-                                    <li>
-                                        @Html.ActionLink("Course Completion", "Index", "CourseCompletions")
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
-                                <label for="drop-2" class="toggle">Layouts <span class="fa fa-angle-down" aria-hidden="true"></span> </label>
-                                <a href="#">Users <span class="fa fa-angle-down" aria-hidden="true"></span></a>
-                                <input type="checkbox" id="drop-2" />
-                                <ul>
-                                    <li>
-                                        @Html.ActionLink("RolesAdmin", "Index", "RolesAdmin")
-                                    </li>
-                                    <li>
-                                        @Html.ActionLink("UsersAdmin", "Index", "UsersAdmin")
-                                    </li>
+                                <a href="#">Users</a>
+                                <ul class="dropdown">
+                                    <li>@Html.ActionLink("RolesAdmin", "Index", "RolesAdmin")</li>
+                                    <li>@Html.ActionLink("UsersAdmin", "Index", "UsersAdmin")</li>
                                     <li>@Html.ActionLink("User Details", "Index", "UserDetails")</li>
                                 </ul>
                             </li>
+
                         }
                         @if (Request.IsAuthenticated && User.IsInRole("Manager"))
                         {
                             <li>
-
-                                <!-- First Tier Drop Down -->
-                                <label for="drop-2" class="toggle">Layouts <span class="fa fa-angle-down" aria-hidden="true"></span> </label>
-                                <a href="#">Lessons <span class="fa fa-angle-down" aria-hidden="true"></span></a>
-                                <input type="checkbox" id="drop-2" />
-                                <ul>
-                                    <li>
-                                        @Html.ActionLink("Lessons", "Index", "Lessons")
-                                    </li>
-                                    <li>
-                                        @Html.ActionLink("Lesson Views", "Index", "LessonViews")
-                                    </li>
+                                <a href="#">Lessons</a>
+                                <ul class="dropdown">
+                                    <li>@Html.ActionLink("Lessons", "Index", "Lessons")</li>
+                                    <li>@Html.ActionLink("Lesson Views", "Index", "LessonViews")</li>
                                 </ul>
                             </li>
                             <li>
-                                <label for="drop-2" class="toggle">Layouts <span class="fa fa-angle-down" aria-hidden="true"></span> </label>
-                                <a href="#">Courses <span class="fa fa-angle-down" aria-hidden="true"></span></a>
-                                <input type="checkbox" id="drop-2" />
-                                <ul>
-                                    <li>
-                                        @Html.ActionLink("Courses", "Index", "Courses")
-                                    </li>
-                                    <li>
-                                        @Html.ActionLink("Course Completion", "Index", "CourseCompletions")
-                                    </li>
+                                <a href="#">Courses</a>
+                                <ul class="dropdown">
+                                    <li>@Html.ActionLink("Courses", "Index", "Courses")</li>
+                                    <li>@Html.ActionLink("Course Completion", "Index", "CourseCompletions")</li>
                                 </ul>
                             </li>
+
                         }
                         @if (Request.IsAuthenticated && User.IsInRole("Employee"))
                         {
-                            <li>
 
-                                <!-- First Tier Drop Down -->
-                                <label for="drop-2" class="toggle">Layouts <span class="fa fa-angle-down" aria-hidden="true"></span> </label>
-                                <a href="#">Lessons <span class="fa fa-angle-down" aria-hidden="true"></span></a>
-                                <input type="checkbox" id="drop-2" />
-                                <ul>
-                                    <li>
-                                        @Html.ActionLink("Lessons", "Index", "Lessons")
-                                    </li>
-                                    <li>
-                                        @Html.ActionLink("Lesson Views", "Index", "LessonViews")
-                                    </li>
-                                </ul>
-                            </li>
                             <li>
-                                <label for="drop-2" class="toggle">Layouts <span class="fa fa-angle-down" aria-hidden="true"></span> </label>
-                                <a href="#">Courses <span class="fa fa-angle-down" aria-hidden="true"></span></a>
-                                <input type="checkbox" id="drop-2" />
-                                <ul>
-                                    <li>
-                                        @Html.ActionLink("Course Completion", "Index", "CourseCompletions")
-                                    </li>
+                                <a href="#">Lessons</a>
+                                <ul class="dropdown">
+                                    <li>@Html.ActionLink("Lessons", "Index", "Lessons")</li>
+                                    <li>@Html.ActionLink("Lesson Views", "Index", "LessonViews")</li>
                                 </ul>
                             </li>
+                            <li>@Html.ActionLink("Course Completion", "Index", "CourseCompletions")</li>
+
                         }
                         <li><a href="@Url.Action("Contact", "Home")">Contact</a>
 
 
                         <li class="header-right"> </li>
                         <li>
-                            <label for="drop-2" class="toggle">Layouts <span class="fa fa-angle-down" aria-hidden="true"></span> </label>
-                            <a href="#">Account <span class="fa fa-angle-down" aria-hidden="true"></span></a>
-                            <input type="checkbox" id="drop-2" />
+                            
                             @Html.Partial("_LoginPartial")
                         </li>
                         @*<li>@Html.Partial("_LoginPartial")</li>*@
