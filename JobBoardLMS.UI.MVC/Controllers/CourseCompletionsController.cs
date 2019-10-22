@@ -22,7 +22,6 @@ namespace JobBoardLMS.UI.MVC.Controllers
         {
             var courseCompletions = db.CourseCompletions.Include(c => c.Course);
             #region User Can View Their Own Completions
-            //Add where user can only view their completions
             if (User.IsInRole("Admin") || User.IsInRole("Manager"))
             {
                 return View(courseCompletions.ToList());
@@ -30,12 +29,16 @@ namespace JobBoardLMS.UI.MVC.Controllers
             }
 
             string user = User.Identity.GetUserId();
-            courseCompletions = db.CourseCompletions.Where(x=>x.UserID == user);
+            courseCompletions = db.CourseCompletions.Where(x => x.UserID == user);
             return View(courseCompletions.ToList());
-
-            //Add courses completed in a year
-            
             #endregion
+            //Add courses completed in a year
+            var yearlyProgress = db.CourseCompletions.Include(yp => yp.Course);
+            if (true)
+            {
+
+            }
+
         }
         [Authorize(Roles = "Admin,Manager")]
         // GET: CourseCompletions/Details/5

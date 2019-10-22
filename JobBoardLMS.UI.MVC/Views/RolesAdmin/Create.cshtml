@@ -14,8 +14,6 @@
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>Role.</h4>
-        <hr />
         @Html.ValidationSummary(true)
 
         <div class="form-group">
@@ -28,15 +26,16 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </div>
     </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+    <div>
+        <button>@Html.ActionLink("Back to Roles", "Index")</button>
+        <button>@Html.ActionLink("Cancel", "Index")</button>
+    </div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

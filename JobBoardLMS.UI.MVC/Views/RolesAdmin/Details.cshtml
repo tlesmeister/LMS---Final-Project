@@ -9,8 +9,6 @@
     </div>
 </div>
 <div>
-    <h4>Roles.</h4>
-    <hr />
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.Name)
@@ -39,8 +37,8 @@
     }
 </table>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
+    <button> @Html.ActionLink("Edit", "Edit", new { id = Model.Id })</button> |
+    <button>@Html.ActionLink("Back to Roles", "Index")</button>
 </p>
 
 
