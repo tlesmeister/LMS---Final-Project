@@ -14,9 +14,11 @@
 
 @if (User.IsInRole("Admin"))
 {
+
     <p>
         <button>@Html.ActionLink("Create New Lesson", "Create")</button>
     </p>
+    <h4><a id="#list" href="~/Content/pdfs/instructions.pdf" target="_blank"><b><i>======Please read instructions on the rules and regulations to follow regarding creating lessons!======</i></b></a></h4>
     <table class="table data-table table-striped">
         <thead>
             <tr>
@@ -27,11 +29,11 @@
                     @Html.DisplayNameFor(model => model.Introduction)
                 </th>
                 @*<th>
-                    @Html.DisplayNameFor(model => model.VideoURL)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.PdfFileName)
-                </th>*@
+                        @Html.DisplayNameFor(model => model.VideoURL)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PdfFileName)
+                    </th>*@
                 <th>
                     @Html.DisplayNameFor(model => model.IsActive)
                 </th>
@@ -51,11 +53,11 @@
                         @Html.DisplayFor(modelItem => item.Introduction)
                     </td>
                     @*<td>
-                        @Html.DisplayFor(modelItem => item.VideoURL)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.PdfFileName)
-                    </td>*@
+                            @Html.DisplayFor(modelItem => item.VideoURL)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PdfFileName)
+                        </td>*@
                     <td>
                         @Html.DisplayFor(modelItem => item.IsActive)
                     </td>
@@ -89,11 +91,11 @@
                     @Html.DisplayNameFor(model => model.Introduction)
                 </th>
                 @*<th>
-            @Html.DisplayNameFor(model => model.VideoURL)
-        </th>*@
+                        @Html.DisplayNameFor(model => model.VideoURL)
+                    </th>*@
                 @*<th>
-        @Html.DisplayNameFor(model => model.PdfFileName)
-                </th>*@
+                    @Html.DisplayNameFor(model => model.PdfFileName)
+                            </th>*@
                 <th>
                     @Html.DisplayNameFor(model => model.Course.CourseName)
                 </th>
@@ -117,8 +119,8 @@
                             @Html.DisplayFor(modelItem => item.PdfFileName)
                         </td>*@
                     <td>
-                            @Html.DisplayFor(modelItem => item.Course.CourseName)
-                        </td>
+                        @Html.DisplayFor(modelItem => item.Course.CourseName)
+                    </td>
                     <td>
                         <button>@Html.ActionLink("Enroll", "Details", new { id = item.LessonID })</button>
                     </td>
@@ -131,6 +133,7 @@
 
 @if (User.IsInRole("Manager"))
 {
+    <h4><a id="#list" href="~/Content/pdfs/instructions.pdf" target="_blank">Please read instructions on the rules and regulations to follow regarding conventions.</a></h4>
     <table class="table data-table table-striped">
         <thead>
             <tr>
@@ -189,8 +192,8 @@
 @section scripts{
     <script>
         //apply the jQuery plugin
-            $(document).ready(function () {
-                $(".data-table").DataTable();
-            });
+        $(document).ready(function () {
+            $(".data-table").DataTable();
+        });
     </script>
 }

@@ -7,20 +7,21 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using JobBoardLMS.DATA.EF;
+using Microsoft.AspNet.Identity;
 
 namespace JobBoardLMS.UI.MVC.Controllers
 {
     public class LessonViewsController : Controller
     {
-        public ActionResult compLessons()
-        {
-            #region Lesson Has been Viewed and completed
-            var Id = Session["Id"];
-            ViewBag.enrolledCourseIds = db.LessonViews.Where(a => a.UserID == (string)Id).Select(b => b.LessonID);
-            ViewBag.completedCourses = db.CourseCompletions;
-            #endregion
-            return View(db.Lessons.ToList());
-        }
+        //public ActionResult compLessons()
+        //{
+        //    #region Lesson Has been Viewed and completed
+        //    var Id = Session["Id"];
+        //    ViewBag.enrolledCourseIds = db.LessonViews.Where(a => a.UserID == (string)Id).Select(b => b.LessonID);
+        //    ViewBag.completedCourses = db.CourseCompletions;
+        //    #endregion
+        //    return View(db.Lessons.ToList());
+        //}
 
         private LMSProjectEntities db = new LMSProjectEntities();
         [Authorize(Roles = "Admin,Manager,Employee")]
@@ -28,7 +29,20 @@ namespace JobBoardLMS.UI.MVC.Controllers
         public ActionResult Index()
         {
             var lessonViews = db.LessonViews.Include(l => l.Lessons);
+            #region User Can View Their Own Lesson Views
+            if (User.IsInRole("Admin") || User.IsInRole("Manager"))
+            {
+                return View(lessonViews.ToList());
+
+            }
+
+            string user = User.Identity.GetUserId();
+            lessonViews = db.LessonViews.Where(x => x.UserID == user);
             return View(lessonViews.ToList());
+            #endregion
+
+
+
         }
         [Authorize(Roles = "Admin,Manager,Employee")]
         // GET: LessonViews/Details/5
