@@ -33,7 +33,8 @@ namespace JobBoardLMS.UI.MVC.Controllers
             courseCompletions = db.CourseCompletions.Where(x=>x.UserID == user);
             return View(courseCompletions.ToList());
 
-
+            //Add courses completed in a year
+            
             #endregion
         }
         [Authorize(Roles = "Admin,Manager")]

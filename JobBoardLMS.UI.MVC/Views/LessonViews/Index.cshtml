@@ -31,7 +31,9 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.UserID)
+                    @*@Html.DisplayFor(modelItem => item.UserID)*@
+                    @Html.DisplayFor(modelItem => item.AspNetUser.UserDetail.FirstName)
+                    @Html.DisplayFor(modelItem => item.AspNetUser.UserDetail.LastName)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.DateViewed)

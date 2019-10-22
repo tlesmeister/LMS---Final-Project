@@ -26,12 +26,12 @@
                 <th>
                     @Html.DisplayNameFor(model => model.Introduction)
                 </th>
-                <th>
+                @*<th>
                     @Html.DisplayNameFor(model => model.VideoURL)
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.PdfFileName)
-                </th>
+                </th>*@
                 <th>
                     @Html.DisplayNameFor(model => model.IsActive)
                 </th>
@@ -50,12 +50,12 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.Introduction)
                     </td>
-                    <td>
+                    @*<td>
                         @Html.DisplayFor(modelItem => item.VideoURL)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.PdfFileName)
-                    </td>
+                    </td>*@
                     <td>
                         @Html.DisplayFor(modelItem => item.IsActive)
                     </td>
@@ -89,14 +89,14 @@
                     @Html.DisplayNameFor(model => model.Introduction)
                 </th>
                 @*<th>
-                        @Html.DisplayNameFor(model => model.VideoURL)
-                    </th>*@
-                <th>
-                    @*@Html.DisplayNameFor(model => model.PdfFileName)*@
-                </th>
+            @Html.DisplayNameFor(model => model.VideoURL)
+        </th>*@
                 @*<th>
-                        @Html.DisplayNameFor(model => model.Course.CourseName)
-                    </th>*@
+        @Html.DisplayNameFor(model => model.PdfFileName)
+                </th>*@
+                <th>
+                    @Html.DisplayNameFor(model => model.Course.CourseName)
+                </th>
 
             </tr>
         </thead>
@@ -116,9 +116,9 @@
                         <td>
                             @Html.DisplayFor(modelItem => item.PdfFileName)
                         </td>*@
-                    @*<td>
+                    <td>
                             @Html.DisplayFor(modelItem => item.Course.CourseName)
-                        </td>*@
+                        </td>
                     <td>
                         <button>@Html.ActionLink("Enroll", "Details", new { id = item.LessonID })</button>
                     </td>
