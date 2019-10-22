@@ -41,6 +41,10 @@ namespace JobBoardLMS.UI.MVC.Controllers
             //{
             //    return View(yearlyCompleted.ToList());
             //}
+            //else
+            //{
+            //    return View();
+            //}
             //#endregion
         }
         [Authorize(Roles = "Admin,Manager")]

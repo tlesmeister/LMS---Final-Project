@@ -83,3 +83,19 @@ ul li ul {
         border-bottom-left-radius: 20px;
         overflow: hidden;
     }
+
+
+    /***Different Progress Bar**/
+.progress {
+    position: relative;
+    width: 400px;
+    border: 1px solid #ddd;
+    padding: 1px;
+}
+
+.progress-bar {
+    width: 0px;
+    height: 20px;
+    background-color: #57be65;
+}
+ 
