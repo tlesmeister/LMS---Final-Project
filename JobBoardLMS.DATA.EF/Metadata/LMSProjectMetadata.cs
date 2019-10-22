@@ -12,14 +12,17 @@ namespace JobBoardLMS.DATA.EF
     {
         //Primary Key
         public int CourseCompletionID { get; set; }
+
         [Required(ErrorMessage = "*")]
-        [StringLength(12, ErrorMessage = "* User ID Required must be 12 characters or less.")]
+        [StringLength(128, ErrorMessage = "* User ID Required must be 128 characters or less.")]
         [DisplayFormat(NullDisplayText = "[-N/A-]")]
         public string UserID { get; set; }
+        
         //Foreign Key
         public int CourseID { get; set; }
+
         [Display(Name = "Date Completed")]
-        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true, NullDisplayText = "[-N/A-]")]
+        [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}", ApplyFormatInEditMode = true, NullDisplayText = "[-N/A-]")]
         public System.DateTime DateCompleted { get; set; }
     }
     [MetadataType(typeof(CourseCompletionMetadata))]
@@ -84,7 +87,7 @@ namespace JobBoardLMS.DATA.EF
         //Foreign Key
         public int LessonID { get; set; }
         [Display(Name = "Date Viewed")]
-        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true, NullDisplayText = "[-N/A-]")]
+        [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}", ApplyFormatInEditMode = true, NullDisplayText = "[-N/A-]")]
         public System.DateTime DateViewed { get; set; }
     }
     [MetadataType(typeof(LessonViewMetadata))]

@@ -4,10 +4,17 @@
     color: orange;
 }
 
-.lessonVideos {
+/*.lessonVideos {
     position: absolute;
     top: 590px;
-    right: 120px;
+    right: 350px;
+    height: 300px;
+    width: 600px;
+}*/
+.lessonVideos {
+    position: relative;
+    top: -290px;
+    right: -400px;
     height: 300px;
     width: 600px;
 }

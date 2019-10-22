@@ -7,22 +7,14 @@
       <Diagram DiagramId="0eaedf9272bb48209a5591c72f2fd451" Name="Diagram1" ZoomLevel="113">
         <EntityTypeShape EntityType="LMSProjectModel.AspNetUser" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="LMSProjectModel.CourseCompletion" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="LMSProjectModel.Courses" Width="1.5" PointX="0.75" PointY="2.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="LMSProjectModel.Lesson" Width="1.5" PointX="3" PointY="3.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="LMSProjectModel.LessonView" Width="1.5" PointX="5.25" PointY="5.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="LMSProjectModel.UserDetail" Width="1.5" PointX="0.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LMSProjectModel.Courses" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="LMSProjectModel.Lesson" Width="1.5" PointX="1" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LMSProjectModel.LessonView" Width="1.5" PointX="3.125" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LMSProjectModel.UserDetail" Width="1.5" PointX="7.625" PointY="2.375" IsExpanded="true" />
         <AssociationConnector Association="LMSProjectModel.FK_CourseCompletions_Courses" ManuallyRouted="false" />
         <AssociationConnector Association="LMSProjectModel.FK_Lessons_Courses" ManuallyRouted="false" />
         <AssociationConnector Association="LMSProjectModel.FK_LessonViews_Lessons" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="LMSProjectModel.C__MigrationHistory" Width="1.5" PointX="7.375" PointY="0.75" />
-        <EntityTypeShape EntityType="LMSProjectModel.AspNetRole" Width="1.5" PointX="3" PointY="8" />
-        <EntityTypeShape EntityType="LMSProjectModel.AspNetUserClaim" Width="1.5" PointX="7.5" PointY="7.875" />
-        <EntityTypeShape EntityType="LMSProjectModel.AspNetUserLogin" Width="1.5" PointX="7.5" PointY="5.375" />
-        <EntityTypeShape EntityType="LMSProjectModel.sysdiagram" Width="1.5" PointX="9.375" PointY="0.75" />
-        <AssociationConnector Association="LMSProjectModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
-        <AssociationConnector Association="LMSProjectModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
         <AssociationConnector Association="LMSProjectModel.FK_UserDetails_AspNetUsers" />
-        <AssociationConnector Association="LMSProjectModel.AspNetUserRoles" />
         <AssociationConnector Association="LMSProjectModel.FK_CourseCompletions_AspNetUsers" />
         <AssociationConnector Association="LMSProjectModel.FK_LessonViews_AspNetUsers" />
       </Diagram>

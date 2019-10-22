@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Net.Mail;
 using System.Web;
 using System.Web.Mvc;
 using JobBoardLMS.DATA.EF;
@@ -11,11 +12,11 @@ using Microsoft.AspNet.Identity;
 
 namespace JobBoardLMS.UI.MVC.Controllers
 {
-    
+
     public class LessonsController : Controller
     {
         //Add progress bar https://www.w3schools.com/howto/howto_js_progressbar.asp
-        
+
         private LMSProjectEntities db = new LMSProjectEntities();
         [Authorize(Roles = "Admin,Manager,Employee")]
         // GET: Lessons
@@ -38,7 +39,7 @@ namespace JobBoardLMS.UI.MVC.Controllers
             {
                 return HttpNotFound();
             }
-            
+
             #region Lesson Viewed
             int lessonID = id.Value;
             DateTime viewedDate = DateTime.Now;
@@ -60,14 +61,14 @@ namespace JobBoardLMS.UI.MVC.Controllers
             Courses tCourse = lesson.Course;
             int tcID = lesson.CourseID;
             int thisCount = tCourse.Lessons.Count();
-            tCourse.Lessons.Count();
+            //tCourse.Lessons.Count();
 
             int thisCourseCount = (from x in db.LessonViews
                                    where x.UserID == userID &&
                                    x.Lessons.CourseID == tcID
                                    select x).Count();
 
-            bool userCompletedAlready = db.CourseCompletions.Where(uc => uc.UserID == userID).Where(uc => uc.CourseID == tcID).Count() > 0;
+            bool userCompletedAlready = db.CourseCompletions.Where(uc => uc.UserID == userID && uc.CourseID == tcID).Count() > 0;
 
             if (!userCompletedAlready && thisCourseCount >= thisCount)
             {
@@ -75,8 +76,26 @@ namespace JobBoardLMS.UI.MVC.Controllers
                 cc.UserID = userID;
                 cc.CourseID = tcID;
                 cc.DateCompleted = DateTime.Now;
+
                 db.CourseCompletions.Add(cc);
                 db.SaveChanges();
+
+                //current user details
+
+                var currentUserDeets = db.UserDetails.Where(ud => ud.UserID == userID).Single(); ;
+
+                //CourseCompletion cce = db.CourseCompletions.Where(x => x.CourseCompletionID == completeID).Single();
+                string body = $"{currentUserDeets.FirstName} {currentUserDeets.LastName} has completed course {cc.Course.CourseName} as of {cc.DateCompleted}.";
+                MailMessage mm = new MailMessage("postmaster@devmeister.net", "tlesmeister525@gmail.com", currentUserDeets.FirstName + " " + currentUserDeets.LastName + " has completed a course!", body);
+                   
+
+                SmtpClient client = new SmtpClient("mail.devmeister.net");
+                client.Credentials = new NetworkCredential("postmaster@devmeister.net", "Be@r8918$");
+                using (client)
+                {
+                    client.Send(mm);
+                }
+
                 return View(lesson);
             }
 

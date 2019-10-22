@@ -7,10 +7,11 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using JobBoardLMS.DATA.EF;
+using Microsoft.AspNet.Identity;
 
 namespace JobBoardLMS.UI.MVC.Controllers
 {
-    
+
     public class CourseCompletionsController : Controller
     {
 
@@ -20,7 +21,20 @@ namespace JobBoardLMS.UI.MVC.Controllers
         public ActionResult Index()
         {
             var courseCompletions = db.CourseCompletions.Include(c => c.Course);
+            #region User Can View Their Own Completions
+            //Add where user can only view their completions
+            if (User.IsInRole("Admin") || User.IsInRole("Manager"))
+            {
+                return View(courseCompletions.ToList());
+
+            }
+
+            string user = User.Identity.GetUserId();
+            courseCompletions = db.CourseCompletions.Where(x=>x.UserID == user);
             return View(courseCompletions.ToList());
+
+
+            #endregion
         }
         [Authorize(Roles = "Admin,Manager")]
         // GET: CourseCompletions/Details/5
@@ -37,7 +51,7 @@ namespace JobBoardLMS.UI.MVC.Controllers
             }
             return View(courseCompletion);
         }
-        [Authorize(Roles ="Admin")]
+        [Authorize(Roles = "Admin")]
         // GET: CourseCompletions/Create
         public ActionResult Create()
         {
