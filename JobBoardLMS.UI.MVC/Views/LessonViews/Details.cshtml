@@ -37,6 +37,10 @@
     </dl>
 </div>
 <p style="text-align:center">
+    @if (User.IsInRole("Admin,Manager"))
+    {
     <button>@Html.ActionLink("Edit", "Edit", new { id = Model.LessonViewID })</button>
+    }
+    
     <button>@Html.ActionLink("Back to Lesson Views", "Index")</button>
 </p>

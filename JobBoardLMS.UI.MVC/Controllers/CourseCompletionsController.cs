@@ -33,19 +33,20 @@ namespace JobBoardLMS.UI.MVC.Controllers
             return View(courseCompletions.ToList());
             #endregion
 
-            //#region Add Courses Completed in Year
+            #region Add Courses Completed in Year
+            var yearlyCompleted = db.CourseCompletions.Where(x => x.Course.CourseCompletions.Count() >= 6 && x.UserID == user);
 
-            //var yearlyCompleted = db.CourseCompletions.Where(x => x.Course.CourseCompletions.Count() >= 6 && x.UserID == user);
-
-            //if (User.Identity.IsAuthenticated)
-            //{
-            //    return View(yearlyCompleted.ToList());
-            //}
-            //else
-            //{
-            //    return View();
-            //}
-            //#endregion
+            if (User.Identity.IsAuthenticated)
+            {
+                string userStats = User.Identity.GetUserId();
+                yearlyCompleted = db.CourseCompletions.Where(x => x.UserID == userStats);
+                return View(yearlyCompleted.ToList());
+            }
+            else
+            {
+                return View();
+            }
+            #endregion
         }
         [Authorize(Roles = "Admin,Manager")]
         // GET: CourseCompletions/Details/5

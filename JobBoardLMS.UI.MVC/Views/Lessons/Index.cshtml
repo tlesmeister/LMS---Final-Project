@@ -18,7 +18,7 @@
     <p>
         <button>@Html.ActionLink("Create New Lesson", "Create")</button>
     </p>
-    <h4><a id="#list" href="~/Content/pdfs/instructions.pdf" target="_blank"><b><i>======Please read instructions on the rules and regulations to follow regarding creating lessons!======</i></b></a></h4>
+    <h4 style="text-align:center"><a id="#list" href="~/Content/pdfs/instructions.pdf" target="_blank"><b><i>=>>>>Read Me Before Creating New Lesson!<<<<=</i></b></a></h4>
     <table class="table data-table table-striped">
         <thead>
             <tr>
@@ -133,7 +133,7 @@
 
 @if (User.IsInRole("Manager"))
 {
-    <h4><a id="#list" href="~/Content/pdfs/instructions.pdf" target="_blank">Please read instructions on the rules and regulations to follow regarding conventions.</a></h4>
+    <h4 style="text-align:center"><a id="#list" href="~/Content/pdfs/instructions.pdf" target="_blank"><b><i>======Read Me Before Creating New Lesson!======</i></b></a></h4>
     <table class="table data-table table-striped">
         <thead>
             <tr>
@@ -143,12 +143,12 @@
                 <th>
                     @Html.DisplayNameFor(model => model.Introduction)
                 </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.VideoURL)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.PdfFileName)
-                </th>
+                @*<th>
+                        @Html.DisplayNameFor(model => model.VideoURL)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PdfFileName)
+                    </th>*@
                 <th>
                     @Html.DisplayNameFor(model => model.IsActive)
                 </th>
@@ -168,12 +168,12 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.Introduction)
                     </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.VideoURL)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.PdfFileName)
-                    </td>
+                    @*<td>
+                            @Html.DisplayFor(modelItem => item.VideoURL)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PdfFileName)
+                        </td>*@
                     <td>
                         @Html.DisplayFor(modelItem => item.IsActive)
                     </td>
@@ -181,13 +181,14 @@
                         @Html.DisplayFor(modelItem => item.Course.CourseName)
                     </td>
                     <td>
-                        <button>@Html.ActionLink("Edit", "Edit", new { id = item.LessonID })</button><button>@Html.ActionLink("Details", "Details", new { id = item.LessonID })</button>
+                        <button>@Html.ActionLink("Details", "Details", new { id = item.LessonID })</button>
                     </td>
                 </tr>
             }
         </tbody>
     </table>
 }
+
 
 @section scripts{
     <script>

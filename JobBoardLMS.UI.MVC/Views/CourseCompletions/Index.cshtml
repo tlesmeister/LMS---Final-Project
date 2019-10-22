@@ -21,10 +21,10 @@
         <button>@Html.ActionLink("Create New Course", "Create")</button>
     </p>
 }
-<h4 style="text-align:center">Progress towards yearly CE's</h4>
+@*<h4 style="text-align:center">Progress towards yearly CE's</h4>
 <div class="meter" id="txtHint">
     <span style="width: 25%"></span>
-</div>
+</div>*@
 
 @if (Model.Count() > 0)
 {
@@ -92,7 +92,7 @@ else
 
 @section scripts{
 
-    <script src="http://malsup.github.com/jquery.form.js"></script>
+    
     <script>
 
         //apply the jQuery plugin
@@ -100,16 +100,5 @@ else
             $(".data-table").DataTable();
         });
 
-        $.ajax({
-            // edit to add steve's suggestion.
-            //url: "/ControllerName/ActionName",
-            url: '@Url.Action("Yearly CE Status", "CourseCompletions")',
-            success: function (data) {
-                // your data could be a View or Json or what ever you returned in your action method 
-                // parse your data here
-                var yearlyCompletion = Cours
-                alert(data);
-            }
-        });
     </script>
 }

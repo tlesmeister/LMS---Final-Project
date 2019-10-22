@@ -33,6 +33,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <!-- font-awesome-icons -->
     <link href="~/Content/css/font-awesome.css" rel="stylesheet">
     <!-- //font-awesome-icons -->
+    <!--Datatables-->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/dot-luv/jquery-ui.css">
+    <link rel="stylesheet" href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" />
+    <link rel="stylesheet" href="~/Content/css/jquery.dataTables.min.css">
+    <!--Personal CSS-->
     <link href="~/Content/css/CustomStyleSheet.css" rel="stylesheet" />
     <!-- /Fonts -->
     <link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
@@ -49,10 +54,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 <!-- nav -->
                 <nav role="navigation">
                     @*<div id="logo">
-                        <h1>
-                            <a class="navbar-brand" href="@Url.Action("Index", "Home")">No<span>rm</span> </a>
-                        </h1>
-                    </div>*@
+                            <h1>
+                                <a class="navbar-brand" href="@Url.Action("Index", "Home")">No<span>rm</span> </a>
+                            </h1>
+                        </div>*@
                     <ul class="menu">
                         <li><a href="@Url.Action("Index", "Home")">Home</a></li>
                         <li><a href="@Url.Action("About", "Home")">About</a></li>
@@ -120,7 +125,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
                         <li class="header-right"> </li>
                         <li>
-                            
+
                             @Html.Partial("_LoginPartial")
                         </li>
                         @*<li>@Html.Partial("_LoginPartial")</li>*@
@@ -170,7 +175,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             </div>
         </div>
     </div>
+    <script src="~/Scripts/jquery.dataTables.js"></script>
+    <script src="~/Scripts/jquery.dataTables.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     @RenderSection("scripts", required: false)
 </body>
-
 </html>

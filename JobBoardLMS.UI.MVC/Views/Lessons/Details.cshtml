@@ -162,95 +162,13 @@
 
 
 <p style="text-align:center">
-    <button>@Html.ActionLink("Edit", "Edit", new { id = Model.LessonID })</button><button>@Html.ActionLink("Back to Lessons", "Index")</button>
+    @if (User.IsInRole("Admin, Manager"))
+    {
+        <button>@Html.ActionLink("Edit", "Edit", new { id = Model.LessonID })</button>
+    }
+
+    <button>@Html.ActionLink("Back to Lessons", "Index")</button>
 </p>
 
 
-@section scripts{
-    @*<script>
-        //**********************Mark Lesson as Complete***************************//
-        $('#list').on('click', '.complete-button', function (event) {
-            var item = $(event.@Model.LessonID).parent()
-            var isItemCompleted = item.hasClass('completed')
-            var itemId = item.attr('data-id')
 
-            var updateRequest = $.ajax({
-                type: 'PUT',
-                url: "@Url.Action("Index","CourseCompletions")" + @Model.CourseID,
-                data: { completed: !isItemCompleted }
-            })
-
-            updateRequest.done(function (itemData) {
-                if (itemData.completed) {
-                    item.addClass('completed')
-                } else {
-                    item.removeClass('completed')
-                }
-            })
-        })
-    </script>*@
-}
-
-
-
-
-
-
-
-
-
-
-@*<div style="text-align:center">
-    <dl class="dl-horizontal">*@
-@*<dt>
-        @Html.DisplayNameFor(model => model.LessonTitle)
-    </dt>
-
-    <dd>
-        @Html.DisplayFor(model => model.LessonTitle)
-    </dd>*@
-
-@*<dt>
-        @Html.DisplayNameFor(model => model.Introduction)
-    </dt>
-
-    <dd>
-        @Html.DisplayFor(model => model.Introduction)
-    </dd>*@
-
-@*<dt>
-        @Html.DisplayNameFor(model => model.VideoURL)
-    </dt>
-
-    <dd>
-        @Html.DisplayFor(model => model.VideoURL)
-    </dd>*@
-
-@*<dt>
-        @Html.DisplayNameFor(model => model.PdfFileName)
-    </dt>
-
-    <dd>
-        @Html.DisplayFor(model => model.PdfFileName)
-        <a href="~/Content/images/@Model.PdfFileName" target="_blank">@Model.PdfFileName</a>
-
-    </dd>*@
-
-@*<dt>
-        @Html.DisplayNameFor(model => model.IsActive)
-    </dt>
-
-    <dd>
-        @Html.DisplayFor(model => model.IsActive)
-    </dd>*@
-
-@*<dt>
-        @Html.DisplayNameFor(model => model.Course.CourseName)
-    </dt>
-
-    <dd>
-        @Html.DisplayFor(model => model.Course.CourseName)
-    </dd>*@
-
-@*</dl>
-    </div>*@
