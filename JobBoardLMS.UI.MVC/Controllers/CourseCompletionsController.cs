@@ -11,7 +11,7 @@ using Microsoft.AspNet.Identity;
 
 namespace JobBoardLMS.UI.MVC.Controllers
 {
-
+    
     public class CourseCompletionsController : Controller
     {
 
@@ -20,30 +20,43 @@ namespace JobBoardLMS.UI.MVC.Controllers
         // GET: CourseCompletions
         public ActionResult Index()
         {
-            var courseCompletions = db.CourseCompletions.Include(c => c.Course);
-            #region User Can View Their Own Completions
-            if (User.IsInRole("Admin") || User.IsInRole("Manager"))
+            var courseCompletions = db.CourseCompletions.Include(c => c.Course).Include(c => c.AspNetUser.UserDetail).ToList();
+            //#region User Can View Their Own Completions
+            //if (User.IsInRole("Admin") || User.IsInRole("Manager"))
+            //{
+            //    return View(courseCompletions.ToList());
+
+            //}
+
+            //string user = User.Identity.GetUserId();
+            //courseCompletions = db.CourseCompletions.Where(x => x.UserID == user);
+
+            //#endregion
+
+            //#region Add Courses Completed in Year 
+            //var yearlyCompletion = (from yc in db.CourseCompletions
+            //                        where yc.Course.CourseCompletions.Count() >= 6 && yc.DateCompleted.Year <= 2020
+            //                        orderby yc.AspNetUser.UserName, yc.DateCompleted, yc.Course.CourseCompletions
+            //                        select yc.Course);
+
+            //ViewBag.YearlyCE = yearlyCompletion.Count();
+            //#endregion
+            //return View(courseCompletions.ToList());
+            string userid = User.Identity.GetUserId();
+            if (User.IsInRole("Employee"))
             {
-                return View(courseCompletions.ToList());
 
+                courseCompletions = db.CourseCompletions.Include(c => c.Course).Include(c => c.AspNetUser.UserDetail)
+                .Where(x => x.UserID == userid).ToList();
+                //total # of courses completed
+                ViewBag.NbrCompleted = courseCompletions.Count;
             }
+            else
+            {
+                courseCompletions = db.CourseCompletions.Include(c => c.Course).Include(c => c.AspNetUser.UserDetail).ToList();
+            }
+            return View(courseCompletions);
 
-            string user = User.Identity.GetUserId();
-            courseCompletions = db.CourseCompletions.Where(x => x.UserID == user);
-            return View(courseCompletions.ToList());
-            #endregion
-
-            #region Add Courses Completed in Year  
-            //CourseCompletion yc = new CourseCompletion();
-            var yearlyCompletion = from yc in courseCompletions
-                                   where yc.Course.CourseCompletions.Count() >= 6
-                                  orderby yc.UserID, yc.DateCompleted
-                                  select yc.Course.CourseCompletions;
-
-            ViewBag.YearlyCE = yearlyCompletion.Count();
-            return View(yearlyCompletion.ToList());
-          
-            #endregion
         }
 
         [Authorize(Roles = "Admin,Manager")]

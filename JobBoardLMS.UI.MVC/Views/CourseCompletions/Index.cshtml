@@ -1,5 +1,5 @@
 ﻿@model IEnumerable<JobBoardLMS.DATA.EF.CourseCompletion>
-
+@using JobBoardLMS.DATA.EF;
 @{
     ViewBag.Title = "Course Completion";
 }
@@ -8,6 +8,18 @@
         <p class="col-lg-12 headerText" style="text-align:center">@ViewBag.Title</p>
     </div>
 </div>
+@if (User.IsInRole("Employee"))
+{
+    <div class="text-center">
+        @*<div class="course-progress">
+            <div id="circle"></div>
+            <p class="text-success">*@
+        <h2 class="text-center"><strong>@ViewBag.NbrCompleted out of 6 courses complete!</strong></h2>
+                
+            @*</p>
+        </div>*@
+    </div>
+}
 @if (User.IsInRole("Admin"))
 {
     <p>
@@ -15,15 +27,7 @@
     </p>
 }
 
-<h3>@ViewBag.YearlyCE</h3>
-@*<ul>
-        @foreach (C p in ViewBag.YearlyCE)
-        {
-            <li>
-                @p.CourseCompletions &mdash; <strong>@string.Format($"{p.UserDetails}")</strong>
-            </li>
-        }
-    </ul>*@
+@*<h3 style="text-align:center">@ViewBag.YearlyCE/6</h3>*@
 @*<h4 style="text-align:center">Progress towards yearly CE's</h4>
     <div class="meter" id="txtHint">
         <span style="width: 25%"></span>
@@ -31,74 +35,81 @@
 
         @* https://stackoverflow.com/questions/37769864/c-sharp-mvc-upload-progress-bar, http://blog.newslacker.net/2013/03/aspnet-mvc-how-to-make-working-progress.html *@
 
-        @if (Model.Count() > 0)
-        {
-            <table class="table data-table table-striped">
-                <thead>
-                    <tr>
-                        <th>
-                            @Html.DisplayNameFor(model => model.UserID)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.DateCompleted)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Course.CourseName)
-                        </th>
-                        <th></th>
-                    </tr>
-                </thead>
+@if (Model.Count() > 0)
+{
+    <table class="table data-table table-striped">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.UserID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DateCompleted)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Course.CourseName)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
 
-                <tbody>
-                    @foreach (var item in Model)
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @*@Html.DisplayFor(modelItem => item.UserID)*@
+                        @Html.DisplayFor(modelItem => item.AspNetUser.UserDetail.FirstName)
+                        @Html.DisplayFor(modelItem => item.AspNetUser.UserDetail.LastName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DateCompleted)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Course.CourseName)
+                    </td>
+                    @*<td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.CourseCompletionID }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.CourseCompletionID }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.CourseCompletionID })
+                        </td>*@
+                    @if (User.IsInRole("Admin"))
                     {
-                        <tr>
-                            <td>
-                                @*@Html.DisplayFor(modelItem => item.UserID)*@
-                                @Html.DisplayFor(modelItem => item.AspNetUser.UserDetail.FirstName)
-                                @Html.DisplayFor(modelItem => item.AspNetUser.UserDetail.LastName)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.DateCompleted)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Course.CourseName)
-                            </td>
-                            @*<td>
-                                    @Html.ActionLink("Edit", "Edit", new { id = item.CourseCompletionID }) |
-                                    @Html.ActionLink("Details", "Details", new { id = item.CourseCompletionID }) |
-                                    @Html.ActionLink("Delete", "Delete", new { id = item.CourseCompletionID })
-                                </td>*@
-                            @if (User.IsInRole("Admin"))
-                            {
-                                <td>
-                                    <button>@Html.ActionLink("Edit", "Edit", new { id = item.CourseCompletionID })</button> |
-                                    <button>@Html.ActionLink("Details", "Details", new { id = item.CourseCompletionID })</button> |
-                                    <button>@Html.ActionLink("Delete", "Delete", new { id = item.CourseCompletionID })</button>
-                                </td>
-                            }
-                            @if (User.IsInRole("Manager"))
-                            {
-                                <td>
-                                    <button>@Html.ActionLink("Details", "Details", new { id = item.CourseCompletionID })</button>
-                                </td>
-                            }
-                        </tr>
+                        <td>
+                            <button>@Html.ActionLink("Edit", "Edit", new { id = item.CourseCompletionID })</button> |
+                            <button>@Html.ActionLink("Details", "Details", new { id = item.CourseCompletionID })</button> |
+                            <button>@Html.ActionLink("Delete", "Delete", new { id = item.CourseCompletionID })</button>
+                        </td>
                     }
-                </tbody>
-            </table>
-        }
-        else
-        {
-            <br />
-            <h4 style="text-align:center"> <u><b>User has yet to complete any courses</b></u></h4>
-        }
+                    @if (User.IsInRole("Manager"))
+                    {
+                        <td>
+                            <button>@Html.ActionLink("Details", "Details", new { id = item.CourseCompletionID })</button>
+                        </td>
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <br />
+    <h4 style="text-align:center"> <u><b>User has yet to complete any courses</b></u></h4>
+}
 
-        @section scripts{
-            <script>
-                //apply the jQuery plugin
-                $(document).ready(function () {
-                    $(".data-table").DataTable();
-                });
-            </script>
-        }
+@section scripts{
+    <script>
+        //apply the jQuery plugin
+        $(document).ready(function () {
+            $(".data-table").DataTable();
+        });
+        @*$('#circle').circleProgress({
+            value: (@ViewBag.NbrCompleted / 6),
+            size: 100,
+            fill: {
+            gradient: ["red", "yellow", "green"]
+            }
+            });*@
+    </script>
+}
