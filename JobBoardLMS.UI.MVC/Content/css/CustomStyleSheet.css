@@ -68,3 +68,12 @@ ul li ul {
     font-weight: bolder;
     text-shadow: 2em;
 }
+
+.emailConfirmation{
+    text-align:center;
+    color:darkorange;
+}
+
+.editViewStyle {
+    color: darkorange;
+}
