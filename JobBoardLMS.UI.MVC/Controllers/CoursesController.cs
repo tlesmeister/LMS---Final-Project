@@ -35,7 +35,7 @@ namespace JobBoardLMS.UI.MVC.Controllers
             }
             return View(courses);
         }
-        [Authorize(Roles = "Admin,Manager")]
+        [Authorize(Roles = "Admin")]
         // GET: Courses/Create
         public ActionResult Create()
         {

@@ -102,7 +102,7 @@ namespace JobBoardLMS.UI.MVC.Controllers
             #endregion
             return View(lesson);
         }
-        [Authorize(Roles = "Admin, Manager")]
+        [Authorize(Roles = "Admin")]
         // GET: Lessons/Create
         public ActionResult Create()
         {
