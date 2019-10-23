@@ -50,7 +50,6 @@
                 @if (User.IsInRole("Manager"))
                 {
                     <td>
-                        <button>@Html.ActionLink("Edit", "Edit", new { id = item.CourseID })</button>
                         <button>@Html.ActionLink("Details", "Details", new { id = item.CourseID })</button>
                     </td>
                 }

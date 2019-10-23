@@ -60,14 +60,14 @@ namespace JobBoardLMS.UI.MVC.Controllers
             return View(lessonView);
 
         }
-        [Authorize(Roles = "Admin,Manager")]
+        [Authorize(Roles = "Admin")]
         // GET: LessonViews/Create
         public ActionResult Create()
         {
             ViewBag.LessonID = new SelectList(db.Lessons, "LessonID", "LessonTitle");
             return View();
         }
-        [Authorize(Roles = "Admin,Manager")]
+        [Authorize(Roles = "Admin")]
         // POST: LessonViews/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
@@ -85,7 +85,7 @@ namespace JobBoardLMS.UI.MVC.Controllers
             ViewBag.LessonID = new SelectList(db.Lessons, "LessonID", "LessonTitle", lessonView.LessonID);
             return View(lessonView);
         }
-        [Authorize(Roles = "Admin,Manager")]
+        [Authorize(Roles = "Admin")]
         // GET: LessonViews/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -101,7 +101,7 @@ namespace JobBoardLMS.UI.MVC.Controllers
             ViewBag.LessonID = new SelectList(db.Lessons, "LessonID", "LessonTitle", lessonView.LessonID);
             return View(lessonView);
         }
-        [Authorize(Roles = "Admin,Manager")]
+        [Authorize(Roles = "Admin")]
         // POST: LessonViews/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.

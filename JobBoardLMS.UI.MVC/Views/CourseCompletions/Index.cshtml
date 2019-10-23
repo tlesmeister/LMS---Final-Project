@@ -15,12 +15,7 @@
         <button>@Html.ActionLink("Create New Course", "Create")</button>
     </p>
 }
-@if (User.IsInRole("Manager"))
-{
-    <p>
-        <button>@Html.ActionLink("Create New Course", "Create")</button>
-    </p>
-}
+
 @*<h4 style="text-align:center">Progress towards yearly CE's</h4>
 <div class="meter" id="txtHint">
     <span style="width: 25%"></span>
@@ -75,7 +70,6 @@
                     @if (User.IsInRole("Manager"))
                     {
                         <td>
-                            <button>@Html.ActionLink("Edit", "Edit", new { id = item.CourseCompletionID })</button> |
                             <button>@Html.ActionLink("Details", "Details", new { id = item.CourseCompletionID })</button>
                         </td>
                     }
@@ -90,15 +84,11 @@ else
     <h4 style="text-align:center"> <u><b>User has yet to complete any courses</b></u></h4>
 }
 
-@section scripts{
-
-    
+@section scripts{    
     <script>
-
         //apply the jQuery plugin
         $(document).ready(function () {
             $(".data-table").DataTable();
         });
-
     </script>
 }

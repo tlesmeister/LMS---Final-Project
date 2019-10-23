@@ -34,18 +34,12 @@ namespace JobBoardLMS.UI.MVC.Controllers
             #endregion
 
             #region Add Courses Completed in Year
-            var yearlyCompleted = db.CourseCompletions.Where(x => x.Course.CourseCompletions.Count() >= 6 && x.UserID == user);
-
-            if (User.Identity.IsAuthenticated)
-            {
-                string userStats = User.Identity.GetUserId();
-                yearlyCompleted = db.CourseCompletions.Where(x => x.UserID == userStats);
-                return View(yearlyCompleted.ToList());
-            }
-            else
-            {
-                return View();
-            }
+            //var yearlyCompleted = db.CourseCompletions.Where(x => x.Course.CourseCompletions.Count() >= 6 && x.UserID == user);
+            var yearlyCompleted = from yc in courseCompletions
+                                  where yc.Course.CourseCompletions.Count() >= 6
+                                  orderby yc.UserID, yc.DateCompleted
+                                  select yc.Course.CourseCompletions;
+            return View(yearlyCompleted.ToList());
             #endregion
         }
         [Authorize(Roles = "Admin,Manager")]

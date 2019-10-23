@@ -9,8 +9,6 @@
     </div>
 </div>
 <div style="text-align:center">
-    <h4>CourseCompletion</h4>
-    <hr />
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.UserID)
@@ -38,7 +36,25 @@
 
     </dl>
 </div>
-<p style="text-align:center">
-    <button>@Html.ActionLink("Edit", "Edit", new { id = Model.CourseCompletionID })</button>
-    <button>@Html.ActionLink("Back to Course Completion", "Index")</button>
-</p>
+@if (User.IsInRole("Admin"))
+{
+    <p style="text-align:center">
+        <button>@Html.ActionLink("Edit", "Edit", new { id = Model.CourseCompletionID })</button>
+        <button>@Html.ActionLink("Back to Course Completion", "Index")</button>
+    </p>
+
+}
+@if (User.IsInRole("Manager"))
+{
+    <p style="text-align:center">
+        <button>@Html.ActionLink("Back to Course Completion", "Index")</button>
+    </p>
+
+}
+@if (User.IsInRole("Employee"))
+{
+    <p style="text-align:center">
+        <button>@Html.ActionLink("Back to Course Completion", "Index")</button>
+    </p>
+
+}

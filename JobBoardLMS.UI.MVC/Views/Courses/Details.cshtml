@@ -36,7 +36,17 @@
 
     </dl>
 </div>
-<p style="text-align:center">
-    <button> @Html.ActionLink("Edit", "Edit", new { id = Model.CourseID })</button> 
-    <button>@Html.ActionLink("Back to Courses", "Index")</button>
-</p>
+@if (User.IsInRole("Admin"))
+{
+    <p style="text-align:center">
+        <button> @Html.ActionLink("Edit", "Edit", new { id = Model.CourseID })</button>
+        <button>@Html.ActionLink("Back to Courses", "Index")</button>
+    </p>
+
+}
+@if (User.IsInRole("Manager"))
+{
+    <p style="text-align:center">
+        <button>@Html.ActionLink("Back to Courses", "Index")</button>
+    </p>
+}

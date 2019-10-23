@@ -10,184 +10,91 @@
     </div>
 </div>
 
-@* ====================================================Admin==================================================== *@
-
 @if (User.IsInRole("Admin"))
 {
-
+    <h4 style="text-align:center"><a id="#list" href="~/Content/pdfs/instructions.pdf" target="_blank"><b><i>=>>>>Read Me Before Creating New Lesson!<<<<=</i></b></a></h4>
     <p>
         <button>@Html.ActionLink("Create New Lesson", "Create")</button>
     </p>
-    <h4 style="text-align:center"><a id="#list" href="~/Content/pdfs/instructions.pdf" target="_blank"><b><i>=>>>>Read Me Before Creating New Lesson!<<<<=</i></b></a></h4>
-    <table class="table data-table table-striped">
-        <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.LessonTitle)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Introduction)
-                </th>
-                @*<th>
-                        @Html.DisplayNameFor(model => model.VideoURL)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.PdfFileName)
-                    </th>*@
-                <th>
-                    @Html.DisplayNameFor(model => model.IsActive)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Course.CourseName)
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.LessonTitle)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Introduction)
-                    </td>
-                    @*<td>
-                            @Html.DisplayFor(modelItem => item.VideoURL)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.PdfFileName)
-                        </td>*@
-                    <td>
-                        @Html.DisplayFor(modelItem => item.IsActive)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Course.CourseName)
-                    </td>
-
-                    <td>
-                        <button>@Html.ActionLink("Edit", "Edit", new { id = item.LessonID })</button><br />
-                        <button>@Html.ActionLink("Details", "Details", new { id = item.LessonID })</button><br />
-                        <button>@Html.ActionLink("Delete", "Delete", new { id = item.LessonID })</button>
-                    </td>
-
-                </tr>
-            }
-        </tbody>
-    </table>
 }
-
-@* ====================================================Employee==================================================== *@
-
-@if (User.IsInRole("Employee"))
-{
-    <table class="table data-table table-striped">
-        <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.LessonTitle)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Introduction)
-                </th>
-                @*<th>
-                        @Html.DisplayNameFor(model => model.VideoURL)
-                    </th>*@
-                @*<th>
-                    @Html.DisplayNameFor(model => model.PdfFileName)
-                            </th>*@
-                <th>
-                    @Html.DisplayNameFor(model => model.Course.CourseName)
-                </th>
-
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.LessonTitle)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Introduction)
-                    </td>
-                    @*<td>
-                            @Html.DisplayFor(modelItem => item.VideoURL)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.PdfFileName)
-                        </td>*@
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Course.CourseName)
-                    </td>
-                    <td>
-                        <button>@Html.ActionLink("Enroll", "Details", new { id = item.LessonID })</button>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
-}
-@* ====================================================Manager==================================================== *@
-
 @if (User.IsInRole("Manager"))
 {
-    <h4 style="text-align:center"><a id="#list" href="~/Content/pdfs/instructions.pdf" target="_blank"><b><i>======Read Me Before Creating New Lesson!======</i></b></a></h4>
-    <table class="table data-table table-striped">
-        <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.LessonTitle)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Introduction)
-                </th>
-                @*<th>
-                        @Html.DisplayNameFor(model => model.VideoURL)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.PdfFileName)
-                    </th>*@
-                <th>
-                    @Html.DisplayNameFor(model => model.IsActive)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Course.CourseName)
-                </th>
+    <h4 style="text-align:center"><a id="#list" href="~/Content/pdfs/instructions.pdf" target="_blank"><b><i>=>>>>Read Me Before Creating New Lesson!<<<<=</i></b></a></h4>
+    <p>
+        <button>@Html.ActionLink("Create New Lesson", "Create")</button>
+    </p>
+}
 
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.LessonTitle)
+<table class="table data-table table-striped">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.LessonTitle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Introduction)
+            </th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.VideoURL)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PdfFileName)
+                </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.IsActive)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Course.CourseName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LessonTitle)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Introduction)
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.VideoURL)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Introduction)
-                    </td>
-                    @*<td>
-                            @Html.DisplayFor(modelItem => item.VideoURL)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.PdfFileName)
-                        </td>*@
+                        @Html.DisplayFor(modelItem => item.PdfFileName)
+                    </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsActive)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Course.CourseName)
+                </td>
+                @if (User.IsInRole("Admin"))
+                {
                     <td>
-                        @Html.DisplayFor(modelItem => item.IsActive)
+                        <button>@Html.ActionLink("Edit", "Edit", new { id = item.LessonID })</button>
+                        <button>@Html.ActionLink("Details", "Details", new { id = item.LessonID })</button>
+                        <button>@Html.ActionLink("Delete", "Delete", new { id = item.LessonID })</button>
                     </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Course.CourseName)
-                    </td>
+                }
+                @if (User.IsInRole("Manager"))
+                {
                     <td>
                         <button>@Html.ActionLink("Details", "Details", new { id = item.LessonID })</button>
                     </td>
-                </tr>
-            }
-        </tbody>
-    </table>
-}
+                }
+                @if (User.IsInRole("Employee"))
+                {
+                    <td>
+                        <button>@Html.ActionLink("Details", "Details", new { id = item.LessonID })</button>
+                    </td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>
 
 
 @section scripts{
