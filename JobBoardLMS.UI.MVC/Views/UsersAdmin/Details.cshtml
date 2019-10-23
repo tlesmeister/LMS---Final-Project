@@ -8,9 +8,7 @@
         <p class="col-lg-12 headerText" style="text-align:center">@ViewBag.Title</p>
     </div>
 </div>
-<div>
-    <h4>User</h4>
-    <hr />
+<div style="text-align:center">
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.UserName)
@@ -20,14 +18,14 @@
         </dd>
     </dl>
 </div>
-<h4>List of roles for this user</h4>
+<h4 style="text-align:center">List of roles for this user</h4>
 @if (ViewBag.RoleNames.Count == 0)
 {
     <hr />
     <p>No roles found for this user.</p>
 }
 
-<table class="table">
+<table class="table" style="text-align:center">
 
     @foreach (var item in ViewBag.RoleNames)
     {
@@ -38,9 +36,9 @@
         </tr>
     }
 </table>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
+<p style="text-align:center">
+    <button>@Html.ActionLink("Edit", "Edit", new { id = Model.Id })</button>
+    <button>@Html.ActionLink("Back to Users", "Index")</button>
 </p>
 
 
