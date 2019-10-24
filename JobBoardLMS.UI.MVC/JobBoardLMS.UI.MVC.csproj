@@ -291,6 +291,7 @@
     <Content Include="Content\pdfs\pm.pdf" />
     <Content Include="Content\pdfs\t_sql.pdf" />
     <Content Include="Content\pdfs\instructions.pdf" />
+    <Content Include="Content\pdfs\TashaLesmeisterDocumentation.pdf" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />

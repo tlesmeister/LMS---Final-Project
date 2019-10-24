@@ -8,7 +8,61 @@
         <p class="col-lg-12 headerText" style="text-align:center">@ViewBag.Title</p>
     </div>
 </div>
+
 <h3 style="text-align:center">Are you sure you want to delete this?</h3>
+@*<section class="middile-sec py-5" id="tabs">
+    <div class="container py-md-5">
+        <div class="middile-inner-con">
+            <div class="tab-main mx-auto emailConfirmation">
+
+                <input id="tab1" type="radio" name="tabs" checked>
+                <label for="tab1">@ViewBag.Title | Course Name</label>
+
+                <input id="tab2" type="radio" name="tabs">
+                <label for="tab2">@ViewBag.Title | Description</label>
+
+                @*<input id="tab3" type="radio" name="tabs">
+                    <label for="tab3">@ViewBag.Title | Course Class Active?</label>
+
+                <section id="content1">
+                    <div>
+                        <div class="p-3">
+                            <div>
+                                <dl class="dl-horizontal emailConfirmation">
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.CourseName)
+                                    </dt>
+
+                                    <dd>
+                                        @Html.DisplayFor(model => model.CourseName)
+                                    </dd>
+                                </dl>
+                            </div>
+
+                        </div>
+                    </div>
+                </section>
+                <section id="content2">
+                    <div>
+                        <div>
+                            <dl class="dl-horizontal emailConfirmation">
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Description)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.Description)
+                                </dd>
+                            </dl>
+                        </div>
+                    </div>
+                </section>
+                
+            </div>
+        </div>
+    </div>
+</section>*@
+
 <div style="text-align:center">
     <dl class="dl-horizontal">
         <dt>
@@ -37,12 +91,13 @@
 
     </dl>
 
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-danger" /> |
-            <button>@Html.ActionLink("Cancel", "Index")</button>
+            <input type="submit" value="Delete" class="btn btn-danger" />
+            <button class="btn btn">@Html.ActionLink("Cancel", "Index")</button>
         </div>
     }
 </div>

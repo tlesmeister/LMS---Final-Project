@@ -21,7 +21,6 @@
 <h4 style="text-align:center">List of roles for this user</h4>
 @if (ViewBag.RoleNames.Count == 0)
 {
-    <hr />
     <p>No roles found for this user.</p>
 }
 
@@ -37,8 +36,8 @@
     }
 </table>
 <p style="text-align:center">
-    <button>@Html.ActionLink("Edit", "Edit", new { id = Model.Id })</button>
-    <button>@Html.ActionLink("Back to Users", "Index")</button>
+    <button class="btn btn">@Html.ActionLink("Edit", "Edit", new { id = Model.Id })</button>
+    <button class="btn btn">@Html.ActionLink("Back to Users", "Index")</button>
 </p>
 
 

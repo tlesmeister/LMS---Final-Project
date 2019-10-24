@@ -8,7 +8,77 @@
         <p class="col-lg-12 headerText" style="text-align:center">@ViewBag.Title</p>
     </div>
 </div>
-<div style="text-align:center">
+
+<section class="middile-sec py-5" id="tabs">
+    <div class="container py-md-5">
+        <div class="middile-inner-con">
+            <div class="tab-main mx-auto emailConfirmation">
+
+                <input id="tab1" type="radio" name="tabs" checked>
+                <label for="tab1">@ViewBag.Title | User ID</label>
+
+                <input id="tab2" type="radio" name="tabs">
+                <label for="tab2">@ViewBag.Title | Date Completed</label>
+
+                <input id="tab3" type="radio" name="tabs">
+                    <label for="tab3">@ViewBag.Title | Course Name</label>
+
+                <section id="content1">
+                    <div>
+                        <div class="p-3">
+                            <div>
+                                <dl class="dl-horizontal emailConfirmation">
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.UserID)
+                                    </dt>
+
+                                    <dd>
+                                        @Html.DisplayFor(modelItem => Model.AspNetUser.UserDetail.FirstName)
+                                        @Html.DisplayFor(modelItem => Model.AspNetUser.UserDetail.LastName)
+                                        <br />
+                                        @Html.DisplayFor(model => model.UserID)
+                                    </dd>
+                                </dl>
+                            </div>
+
+                        </div>
+                    </div>
+                </section>
+                <section id="content2">
+                    <div>
+                        <div>
+                            <dl class="dl-horizontal emailConfirmation">
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.DateCompleted)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.DateCompleted)
+                                </dd>
+                            </dl>
+                        </div>
+                    </div>
+                </section>
+                <section id="content3">
+                        <div>
+                            <div>
+                                <dl class="dl-horizontal emailConfirmation">
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.Course.CourseName)
+                                    </dt>
+
+                                    <dd>
+                                        @Html.DisplayFor(model => model.Course.CourseName)
+                                    </dd>
+                                </dl>
+                            </div>
+                        </div>
+                    </section>
+            </div>
+        </div>
+    </div>
+</section>
+@*<div style="text-align:center">
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.UserID)
@@ -35,12 +105,12 @@
         </dd>
 
     </dl>
-</div>
+</div>*@
 @if (User.IsInRole("Admin"))
 {
     <p style="text-align:center">
-        <button>@Html.ActionLink("Edit", "Edit", new { id = Model.CourseCompletionID })</button>
-        <button>@Html.ActionLink("Back to Course Completion", "Index")</button>
+        <button class="btn btn">@Html.ActionLink("Edit", "Edit", new { id = Model.CourseCompletionID })</button>
+        <button class="btn btn">@Html.ActionLink("Back to Course Completion", "Index")</button>
     </p>
 
 }

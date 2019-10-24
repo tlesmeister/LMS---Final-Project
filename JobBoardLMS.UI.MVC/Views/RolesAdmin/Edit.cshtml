@@ -27,15 +27,12 @@
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Save" class="btn btn-primary" />
+                <button class="btn btn">@Html.ActionLink("Back to Roles", "Index")</button>
+                <button class="btn btn">@Html.ActionLink("Cancel", "Index")</button>
             </div>
         </div>
     </div>
 }
-
-    <div>
-        <button>@Html.ActionLink("Back to Roles", "Index")</button>
-        <button>@Html.ActionLink("Cancel", "Index")</button>
-    </div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

@@ -16,6 +16,9 @@
         </dt>
 
         <dd>
+            @Html.DisplayFor(modelItem => Model.AspNetUser.UserDetail.FirstName)
+            @Html.DisplayFor(modelItem => Model.AspNetUser.UserDetail.LastName)
+            <br />
             @Html.DisplayFor(model => model.UserID)
         </dd>
 
@@ -41,8 +44,8 @@
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-danger" /> |
-            <button>@Html.ActionLink("Cancel", "Index")</button>
+            <input type="submit" value="Delete" class="btn btn-danger" />
+            <button class="btn btn">@Html.ActionLink("Cancel", "Index")</button>
         </div>
     }
 </div>
