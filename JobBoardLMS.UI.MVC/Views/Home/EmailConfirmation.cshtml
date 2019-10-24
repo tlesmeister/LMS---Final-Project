@@ -7,8 +7,28 @@
         <p class="col-lg-12 headerText" style="text-align:center">@ViewBag.Title</p>
     </div>
 </div>
-<div class="emailConfirmation">
-    <h4 class="emailConfirmation">We have received your message:</h4>
-    <p><b>"@Model.Message"</b></p>
-    <p class="emailConfirmation"><br /><b>We will respond as soon as we can to @Model.Email . </b><br /><b>Thank you for contacting us.</b></p>
-</div>
+<section class="middile-sec py-5" id="tabs">
+    <div class="container py-md-5">
+        <div class="middile-inner-con">
+            <div class="tab-main mx-auto" style="text-align:center">
+
+                <input id="tab1" type="radio" name="tabs" checked>
+                <label for="tab1">@ViewBag.Title | Received</label>
+
+                <section id="content1">
+                    <div>
+
+                        <div>
+                            <div>
+                                <h4 class="emailConfirmation"><b>We have received your message:</b></h4>
+                                <h4><br /><b>"@Model.Message"</b></h4>
+                                <h4 class="emailConfirmation"><br /><b>We will respond as soon as we can to @Model.Email. </b><br /><b>Thank you for contacting us.</b></p>
+                            </div>
+
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</section>
