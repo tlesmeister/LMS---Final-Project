@@ -77,3 +77,48 @@ ul li ul {
 .editViewStyle {
     color: darkorange;
 }
+/*******Hamburger Menu********/
+nav a.pull-left {
+    font-weight: bold;
+    color: orange;
+    background: purple;
+    padding: 10px;
+    text-decoration: none;
+    font-size: 1.5em;
+    display: none;
+}
+
+@media screen and (max-width: 850px) {
+    nav ul#nav-list {
+        display: none;
+    }
+
+    nav a.pull-left {
+        display: inline-block;
+    }
+
+    nav ul#nav-list.expanded {
+        float: none;
+        clear: both;
+        display: block;
+        
+    }
+
+        nav ul#nav-list.expanded li {
+            display: block;
+        }
+
+            nav ul#nav-list.expanded li a {
+                display: block;
+                text-align: center;
+                font-size: 1em;
+                color: orange;
+            }
+
+    nav li.dropdown ul.dropdown-menu {
+        width: 50%;
+        float: none;
+        margin: auto; /*auto figure out horizontal and vertical position to be in the middle.*/
+        position: static; /*Default value for the position property*/
+    }
+}

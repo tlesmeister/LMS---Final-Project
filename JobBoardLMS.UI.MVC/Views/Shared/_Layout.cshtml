@@ -53,34 +53,36 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             <div class="container navbar">
                 <!-- nav -->
                 <nav role="navigation">
+
                     @*<div id="logo">
                             <h1>
                                 <a class="navbar-brand" href="@Url.Action("Index", "Home")">No<span>rm</span> </a>
                             </h1>
                         </div>*@
-                    <ul class="menu">
+                    <a href="javascript:void(0)" class="pull-left" onclick="toggleNavBar()" id="menu-btn">&#9776;</a>
+                    <ul class="menu" id="nav-list">
                         <li><a href="@Url.Action("Index", "Home")">Home</a></li>
                         <li><a href="@Url.Action("About", "Home")">About</a></li>
                         @if (Request.IsAuthenticated && User.IsInRole("Admin"))
                         {
                             <li>
-                                <a href="#">Courses</a>
-                                <ul class="dropdown">
+                                <a href="@Url.Action("Index", "Courses")">Courses</a>
+                                <ul class="dropdown" id="nav-list">
                                     <li>@Html.ActionLink("Courses", "Index", "Courses")</li>
                                     <li>@Html.ActionLink("Course Completion", "Index", "CourseCompletions")</li>
                                 </ul>
                             </li>
                             <li>
-                                <a href="#">Lessons</a>
-                                <ul class="dropdown">
+                                <a href="@Url.Action("Index", "Lessons")">Lessons</a>
+                                <ul class="dropdown" id="nav-list">
                                     <li>@Html.ActionLink("Lessons", "Index", "Lessons")</li>
                                     <li>@Html.ActionLink("Lesson Views", "Index", "LessonViews")</li>
                                 </ul>
                             </li>
 
                             <li>
-                                <a href="#">Users</a>
-                                <ul class="dropdown">
+                                <a href="@Url.Action("Index", "UserDetails")">Users</a>
+                                <ul class="dropdown" id="nav-list">
                                     <li>@Html.ActionLink("RolesAdmin", "Index", "RolesAdmin")</li>
                                     <li>@Html.ActionLink("UsersAdmin", "Index", "UsersAdmin")</li>
                                     <li>@Html.ActionLink("User Details", "Index", "UserDetails")</li>
@@ -91,15 +93,15 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         @if (Request.IsAuthenticated && User.IsInRole("Manager"))
                         {
                             <li>
-                                <a href="#">Lessons</a>
-                                <ul class="dropdown">
+                                <a href="@Url.Action("Index", "LessonViews")">Lessons</a>
+                                <ul class="dropdown" id="nav-list">
                                     <li>@Html.ActionLink("Lessons", "Index", "Lessons")</li>
                                     <li>@Html.ActionLink("Lesson Views", "Index", "LessonViews")</li>
                                 </ul>
                             </li>
                             <li>
-                                <a href="#">Courses</a>
-                                <ul class="dropdown">
+                                <a href="@Url.Action("Index", "Courses")">Courses</a>
+                                <ul class="dropdown" id="nav-list">
                                     <li>@Html.ActionLink("Courses", "Index", "Courses")</li>
                                     <li>@Html.ActionLink("Course Completion", "Index", "CourseCompletions")</li>
                                 </ul>
@@ -110,8 +112,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         {
 
                             <li>
-                                <a href="#">Lessons</a>
-                                <ul class="dropdown">
+                                <a href="@Url.Action("Index", "LessonViews")">Lessons</a>
+                                <ul class="dropdown" id="nav-list">
                                     <li>@Html.ActionLink("Lessons", "Index", "Lessons")</li>
                                     <li>@Html.ActionLink("Lesson Views", "Index", "LessonViews")</li>
                                 </ul>
@@ -175,12 +177,30 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             </div>
         </div>
     </div>
+
     <script src="~/Scripts/jquery.dataTables.js"></script>
     <script src="~/Scripts/jquery.dataTables.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+
     @RenderSection("scripts", required: false)
+    <script>
+        function toggleNavBar() {
+            let navList = document.getElementById('nav-list');
+            navList.classList.toggle('expanded');
+
+            //Toggle Hamburger button/Close button
+            let btnMenu = document.getElementById('menu-btn');
+            if (navList.classList.contains('expanded')) {
+                btnMenu.innerHTML = "&times;";
+            }
+            else {
+                btnMenu.innerHTML = "&#9776";
+            }
+        }
+
+    </script>
 </body>
 </html>
